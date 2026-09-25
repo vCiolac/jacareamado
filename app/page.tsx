@@ -1,21 +1,29 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import DoctorSection from "@/components/DoctorSection";
 import Services from "@/components/Services";
-import About from "@/components/About";
-import ContactCta from "@/components/ContactCta";
+import GalleryCarousel from "@/components/GalleryCarousel";
+import VideoSection from "@/components/VideoSection";
+import AboutSection from "@/components/AboutSection";
+import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
-import WhatsappFloatButton from "@/components/WhatsappFloatButton";
+import PawTrail from "@/components/PawTrail";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Header />
-      <Hero />
-      <Services />
-      <About />
-      <ContactCta />
+      <main>
+        <Hero />
+        <DoctorSection />
+        <Services />
+        <GalleryCarousel />
+        <VideoSection />
+        <AboutSection />
+        <LocationSection />
+      </main>
       <Footer />
-      <WhatsappFloatButton />
-    </main>
+      <PawTrail />
+    </>
   );
 }

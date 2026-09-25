@@ -1,10 +1,24 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
+const title = `${siteConfig.business.name} — ${siteConfig.business.tagline}`;
+const description = `${siteConfig.hero.subheading} ${siteConfig.location.address}.`;
+
 export const metadata: Metadata = {
-  title: `${siteConfig.business.name} — ${siteConfig.business.tagline}`,
-  description: siteConfig.hero.subheading,
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    type: "website",
+    locale: "pt_BR",
+    siteName: siteConfig.business.name,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FBF8F3",
 };
 
 export default function RootLayout({
@@ -26,7 +40,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body bg-cream text-ink">{children}</body>
+      <body className="bg-cream font-body text-ink antialiased">{children}</body>
     </html>
   );
 }

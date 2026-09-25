@@ -20,11 +20,80 @@
 }
 
 *:focus-visible {
-  outline: 3px solid #0E3A5C;
-  outline-offset: 2px;
+  outline: 3px solid #0D4A78;
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.paw-divider {
-  background-image: radial-gradient(currentColor 1.5px, transparent 1.5px);
-  background-size: 10px 10px;
+/* Esconde a barra de rolagem do carrossel (o swipe continua funcionando) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---- Patinha "Como chegar" ------------------------------------------- */
+
+.paw-step {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  color: #e62d73;
+  opacity: 0;
+  animation: paw-step 1100ms ease-out forwards;
+}
+
+@keyframes paw-step {
+  0% {
+    opacity: 0;
+    transform: var(--paw-transform) scale(0.6);
+  }
+  18% {
+    opacity: 0.75;
+    transform: var(--paw-transform) scale(1);
+  }
+  60% {
+    opacity: 0.55;
+  }
+  100% {
+    opacity: 0;
+    transform: var(--paw-transform) scale(0.95);
+  }
+}
+
+.paw-step.is-last {
+  animation: paw-pop 900ms ease-out forwards;
+}
+
+@keyframes paw-pop {
+  0% {
+    opacity: 0;
+    transform: var(--paw-transform) scale(0.6);
+  }
+  30% {
+    opacity: 0.9;
+    transform: var(--paw-transform) scale(1.35);
+  }
+  50% {
+    transform: var(--paw-transform) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: var(--paw-transform) scale(1);
+  }
+}
+
+/* Destaque sutil no mapa quando a patinha chega */
+.map-arrived {
+  animation: map-arrived 1600ms ease-out;
+}
+
+@keyframes map-arrived {
+  0% {
+    box-shadow: 0 0 0 0 rgba(230, 45, 115, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 18px rgba(230, 45, 115, 0);
+  }
 }

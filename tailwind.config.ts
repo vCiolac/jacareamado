@@ -1,20 +1,23 @@
 import type { Config } from "tailwindcss";
 
+// Paleta do briefing de redesign. As variações "deep" existem para garantir
+// contraste AA quando a cor é usada em texto pequeno ou como fundo de botão.
 const config: Config = {
   content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
         sky: {
-          DEFAULT: "#2196D4",
-          deep: "#1476A8",
+          DEFAULT: "#15ADD0", // ciano
+          deep: "#0B7896",
         },
         magenta: {
-          DEFAULT: "#E6157C",
-          deep: "#C4106A",
+          DEFAULT: "#E62D73", // rosa
+          deep: "#C81E5E",
+          darker: "#A8184F",
         },
-        navy: "#0E3A5C",
-        cream: "#FDFBF6",
+        navy: "#0D4A78", // azul principal
+        cream: "#FBF8F3", // base clara
         ink: "#12293D",
       },
       fontFamily: {

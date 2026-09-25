@@ -1,104 +1,131 @@
 // ============================================================================
 // CONFIGURAÇÃO DO SITE — edite tudo aqui, nenhum texto fica "preso" no código
 // ============================================================================
+//
+// Imagens e vídeo: coloque os arquivos em /public/images (ou /public/videos)
+// e aponte o caminho aqui, ex: "/images/doutora.jpg". Enquanto o valor for
+// `null`, o site mostra um espaço pontilhado marcado como placeholder.
+//
+// Itens marcados com "PLACEHOLDER" ainda precisam de dados reais.
+// ============================================================================
+
+type Media = string | null;
 
 export const siteConfig = {
   business: {
     name: "Jacaré Amado",
     tagline: "Consultório Veterinário Popular",
+    // Logo em imagem (ex: "/images/logo.png"). Enquanto for null, o nome
+    // aparece escrito com a fonte da marca.
+    logo: null as Media,
   },
 
+  // Menu do topo — mantenha curto. O item com `paw: true` dispara a patinha.
   nav: [
-    { label: "Início", href: "#inicio" },
-    { label: "Serviços", href: "#servicos" },
     { label: "A Doutora", href: "#doutora" },
-    { label: "Contato", href: "#contato" },
+    { label: "Galeria", href: "#galeria" },
+    { label: "Como chegar", href: "#como-chegar", paw: true },
   ],
 
   hero: {
-    heading: "Cuidado veterinário",
-    headingHighlight: "perto de você",
+    heading: "Cuidado veterinário de qualidade,",
+    headingHighlight: "perto de você.",
     subheading:
       "Atendimento veterinário humano, responsável e acessível para quem faz parte da sua família.",
-    primaryCta: "Falar no WhatsApp",
-    secondaryCta: "Conhecer o consultório",
-    // Troque por uma foto real da doutora/consultório quando tiver.
-    // Ex: "/images/hero.jpg" (coloque o arquivo em /public/images/)
-    image: null as string | null,
+    whatsappCta: "Falar no WhatsApp",
+    instagramCta: "Ver Instagram",
+    // Arte principal (ilustração da doutora com os animais).
+    // Ex: "/images/hero-arte.png"
+    image: null as Media,
+    imageAlt:
+      "Ilustração da Dra. Ana Paula Ayres Pedro abraçando cães, gatos, um coelho e o jacaré mascote",
   },
 
-  // Aparece logo abaixo do hero
-  quickInfo: {
-    hours: "Terça a Sábado • 10h às 18h",
-    address: "Estrada de Jacarepaguá, 7187 — Loja A — Freguesia",
-    phones: ["(21) 3190-5544", "(21) 98229-3526"],
+  doctor: {
+    eyebrow: "A Doutora",
+    name: "Dra. Ana Paula Ayres Pedro",
+    role: "Médica-Veterinária",
+    registration: "CRMV-RJ 7827",
+    text: "Médica-veterinária com ampla experiência e especialização, oferecendo atendimento a preço popular na Freguesia, Jacarepaguá, ao lado do Prezunic.",
+    // PLACEHOLDER — preencha com as especializações/áreas de atuação reais,
+    // ex: ["Clínica geral de cães e gatos", "..."]. Lista vazia = aviso na tela.
+    specialties: [] as string[],
+    // Foto real da doutora (retrato, idealmente 4:5). Ex: "/images/doutora.jpg"
+    photo: null as Media,
+    photoAlt: "Dra. Ana Paula Ayres Pedro no consultório Jacaré Amado",
   },
 
-  highlight: {
-    title: "Desde sempre cuidando de perto",
-    text: "Tradição, carinho e compromisso com a saúde do seu pet.",
-    image: null as string | null,
-  },
-
+  // Faixa compacta de serviços entre a doutora e a galeria
   services: {
-    eyebrow: "Nossos serviços",
-    heading: "Tudo que seu pet precisa",
+    heading: "Atendimentos no consultório",
     items: [
-      {
-        name: "Consultas",
-        description: "Avaliação completa e cuidadosa do seu melhor amigo.",
-        icon: "stethoscope",
-      },
-      {
-        name: "Vacinas",
-        description: "Protocolos de vacinação seguros e personalizados.",
-        icon: "syringe",
-      },
-      {
-        name: "Exames",
-        description: "Diagnósticos precisos para um cuidado mais eficaz.",
-        icon: "flask",
-      },
-      {
-        name: "Ultrassonografia",
-        description: "Tecnologia para ver além e cuidar melhor.",
-        icon: "waves",
-      },
-      {
-        name: "Radiografia",
-        description: "Imagens que ajudam a entender e tratar com segurança.",
-        icon: "scan",
-      },
-      {
-        name: "Soroterapia",
-        description: "Hidratação e suporte para recuperação com carinho.",
-        icon: "droplet",
-      },
+      { name: "Consultas", icon: "stethoscope" },
+      { name: "Vacinas", icon: "syringe" },
+      { name: "Exames", icon: "flask" },
+      { name: "Ultrassonografia", icon: "waves" },
+      { name: "Radiografia", icon: "scan" },
+      { name: "Soroterapia", icon: "droplet" },
     ],
   },
 
-  about: {
-    eyebrow: "Sobre a doutora",
-    heading: "Cuidado de verdade, de perto",
-    text: "Médica-veterinária com ampla experiência e especialização, oferecendo atendimento a preço popular na Freguesia, Jacarepaguá, ao lado do Prezunic.",
-    doctorName: "Dra. Ana Paula Ayres Pedro",
-    doctorRole: "Médica-Veterinária",
-    registration: "CRMV-RJ 7827",
-    // Foto real da doutora — troque quando tiver.
-    image: null as string | null,
+  gallery: {
+    eyebrow: "Galeria",
+    heading: "Conheça o consultório",
+    text: "O espaço, o cuidado e alguns dos pacientes que já passaram por aqui.",
+    // Fotos do carrossel (proporção 4:3). Troque `src` e ajuste o `alt`
+    // descrevendo o que aparece na foto.
+    items: [
+      { src: null as Media, alt: "Fachada do consultório", placeholder: "Fachada" },
+      { src: null as Media, alt: "Recepção do consultório", placeholder: "Recepção" },
+      { src: null as Media, alt: "Sala de atendimento", placeholder: "Consultório" },
+      { src: null as Media, alt: "Equipamentos do consultório", placeholder: "Equipamentos" },
+      { src: null as Media, alt: "Paciente atendido no consultório", placeholder: "Paciente" },
+      { src: null as Media, alt: "Paciente atendido no consultório", placeholder: "Paciente" },
+    ],
   },
 
-  contactCta: {
-    heading: "Vamos cuidar do seu melhor amigo?",
-    text: "Fale conosco e agende uma consulta.",
-    cta: "Falar no WhatsApp",
-    // Endereço usado no mapa incorporado (Google Maps, sem precisar de API key)
+  video: {
+    heading: "Um tour pelo consultório",
+    text: "Dê o play e veja por dentro onde seu pet vai ser atendido.",
+    // Vídeo gravado na clínica (MP4 H.264, idealmente até ~15 MB).
+    // Ex: "/videos/tour.mp4"
+    src: null as Media,
+    // Capa do vídeo (imagem 16:9). Ex: "/images/tour-capa.jpg"
+    poster: null as Media,
+    title: "Tour pelo consultório Jacaré Amado",
+  },
+
+  // Mosaico pequeno de fotos extras, abaixo do vídeo (use 5 fotos).
+  // A primeira aparece maior.
+  mosaic: [
+    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 1" },
+    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 2" },
+    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 3" },
+    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 4" },
+    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 5" },
+  ],
+
+  about: {
+    eyebrow: "Sobre o Jacaré Amado",
+    heading: "Desde sempre cuidando de perto",
+    text: "Tradição, carinho e compromisso com a saúde do seu pet. Aqui, cada animal é recebido com calma e atenção, com atendimento de qualidade a preço popular, pertinho de você.",
+  },
+
+  location: {
+    eyebrow: "Como chegar",
+    heading: "Venha nos visitar",
+    hours: "Terça a Sábado • 10h às 18h",
+    address: "Estrada de Jacarepaguá, 7187 — Loja A — Freguesia",
+    reference: "Ao lado do Prezunic",
+    phones: ["(21) 3190-5544", "(21) 98229-3526"],
+    // Endereço usado no mapa incorporado e no link "Abrir no Google Maps"
     mapQuery: "Estrada de Jacarepaguá, 7187, Loja A, Freguesia, Rio de Janeiro",
   },
 
   contact: {
     whatsappNumber: "5521982293526", // formato internacional, só dígitos
     whatsappMessage: "Olá! Gostaria de agendar uma consulta para o meu pet.",
+    // PLACEHOLDER — cole aqui o link do perfil, ex: "https://www.instagram.com/usuario"
     instagramUrl: "",
   },
 

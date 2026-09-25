@@ -4,40 +4,71 @@ Site em Next.js (App Router) + Tailwind CSS para o consultório veterinário
 **Jacaré Amado**. Feito pra ser simples de editar e fácil de publicar no
 Vercel.
 
+## Estrutura da página
+
+1. Header — logo + "A Doutora", "Galeria", "Como chegar" (com a patinha)
+2. Hero — headline + **dois CTAs**: WhatsApp e Instagram
+3. A Doutora — foto, nome, CRMV, especializações
+4. Faixa compacta de serviços
+5. Galeria em carrossel (swipe no mobile, setas + indicadores, sem autoplay)
+6. Vídeo/tour (play manual; o vídeo só carrega após o clique) + mosaico de fotos
+7. Sobre
+8. Como chegar (`#como-chegar`) — mapa, endereço, horário, telefones
+9. Footer
+
 ## Como editar o conteúdo
 
-Praticamente tudo o que aparece no site (textos, telefone, endereço,
-horário, serviços, dados da doutora, link do WhatsApp) está em um único
-arquivo:
+Tudo o que aparece no site (textos, links, telefone, endereço, horário,
+CRMV, especializações, fotos e vídeo) está em um único arquivo:
 
 ```
 lib/site-config.ts
 ```
 
-Abra esse arquivo, mude o que quiser e salve — não precisa mexer em nenhum
-componente para trocar texto, telefone, endereço, etc.
+Itens ainda sem dado real estão marcados com `PLACEHOLDER` nesse arquivo e
+aparecem no site como caixas pontilhadas com a etiqueta "placeholder".
 
-### Trocar as fotos
+### Trocar fotos e vídeo
 
-As imagens da doutora ainda estão como placeholder (um quadro pontilhado
-"espaço para foto"). Quando tiver as fotos reais:
+1. Coloque os arquivos em `public/images/` (fotos) e `public/videos/` (vídeo).
+2. Em `lib/site-config.ts`, troque o `null` pelo caminho, por exemplo:
+   - `business.logo` → `"/images/logo.png"`
+   - `hero.image` → `"/images/hero-arte.png"` (arte da doutora com os animais)
+   - `doctor.photo` → `"/images/doutora.jpg"` (retrato 4:5)
+   - `gallery.items[n].src` → fotos do carrossel (4:3) — ajuste também o `alt`
+   - `mosaic[n].src` → fotos extras (a primeira aparece maior)
+   - `video.src` → `"/videos/tour.mp4"` e `video.poster` → `"/images/tour-capa.jpg"` (16:9)
 
-1. Coloque os arquivos em `public/images/` (ex: `public/images/hero.jpg`,
-   `public/images/sobre.jpg`).
-2. Em `lib/site-config.ts`, troque:
-   - `hero.image` → `"/images/hero.jpg"`
-   - `about.image` → `"/images/sobre.jpg"`
+As fotos são otimizadas automaticamente pelo `next/image` (AVIF/WebP, lazy
+load). Para o vídeo, prefira MP4 H.264 comprimido (idealmente até ~15 MB).
 
-### Trocar o número de WhatsApp ou a mensagem padrão
+### Links
 
-Também em `lib/site-config.ts`, no bloco `contact`:
+No bloco `contact`:
 
 ```ts
 contact: {
   whatsappNumber: "5521982293526", // DDI + DDD + número, só dígitos
   whatsappMessage: "Olá! Gostaria de agendar uma consulta para o meu pet.",
+  instagramUrl: "https://www.instagram.com/SEU_USUARIO", // hoje vazio = placeholder
 }
 ```
+
+### Especializações
+
+Em `doctor.specialties`, liste as áreas de atuação reais:
+
+```ts
+specialties: ["Área 1", "Área 2"],
+```
+
+## Patinha "Como chegar"
+
+Qualquer link com `data-paw-trail` (hoje, o "Como chegar" do topo) dispara
+pegadas pela lateral esquerda enquanto a página rola até a âncora. Lógica em
+`components/PawTrail.tsx`, estilos em `app/globals.css`. Com
+`prefers-reduced-motion` ativo, vai direto para a âncora sem animação; sem
+JavaScript, funciona como link âncora comum.
 
 ## Rodar localmente
 
@@ -75,9 +106,11 @@ Depois abra http://localhost:3000 no navegador.
 ## Estrutura do projeto
 
 ```
-app/                 páginas e layout raiz
-components/          seções do site (Header, Hero, Services, About, etc.)
+app/                 página, layout (metadados) e favicon (icon.svg)
+components/          seções: Header, Hero, DoctorSection, Services,
+                     GalleryCarousel, VideoSection, PhotoMosaic, AboutSection,
+                     LocationSection, Footer, PawTrail (+ Photo, Logo)
 lib/site-config.ts   todo o conteúdo editável do site
-lib/whatsapp.ts       monta o link do botão de WhatsApp
-public/images/        onde colocar as fotos reais
+lib/links.ts         monta links de WhatsApp, Instagram, mapa e telefone
+public/images/       onde colocar as fotos reais
 ```

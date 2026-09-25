@@ -18,38 +18,30 @@ const ICONS: Record<string, LucideIcon> = {
   droplet: Droplet,
 };
 
+// Faixa compacta — a lista continua existindo, mas sem cards altos
 export default function Services() {
   const { services } = siteConfig;
 
   return (
-    <section id="servicos" className="mx-auto max-w-6xl px-5 py-20 sm:py-24">
-      <div className="mx-auto max-w-xl text-center">
-        <p className="text-sm font-semibold text-magenta">{services.eyebrow}</p>
-        <h2 className="mt-2 font-display text-3xl font-bold text-navy sm:text-4xl">
+    <section aria-labelledby="servicos-titulo" className="border-y border-navy/5 bg-cream">
+      <div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 py-8 lg:flex-row lg:items-center lg:gap-10">
+        <h2
+          id="servicos-titulo"
+          className="shrink-0 text-sm font-semibold uppercase tracking-[0.14em] text-navy"
+        >
           {services.heading}
         </h2>
-      </div>
-
-      <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3">
-        {services.items.map((item) => {
-          const Icon = ICONS[item.icon] ?? Stethoscope;
-          return (
-            <div
-              key={item.name}
-              className="rounded-2xl border border-navy/8 bg-white p-6 text-center shadow-sm transition-shadow hover:shadow-md"
-            >
-              <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-sky/12 text-sky-deep">
-                <Icon className="h-6 w-6" strokeWidth={1.9} />
-              </span>
-              <h3 className="mt-4 font-display text-lg font-semibold text-navy">
+        <ul className="flex flex-wrap gap-x-6 gap-y-3">
+          {services.items.map((item) => {
+            const Icon = ICONS[item.icon] ?? Stethoscope;
+            return (
+              <li key={item.name} className="flex items-center gap-2 text-sm font-medium text-ink/75">
+                <Icon className="h-4 w-4 text-sky-deep" strokeWidth={2} aria-hidden />
                 {item.name}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink/60">
-                {item.description}
-              </p>
-            </div>
-          );
-        })}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
