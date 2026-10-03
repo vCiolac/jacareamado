@@ -3,7 +3,7 @@ import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const title = `${siteConfig.business.name} — ${siteConfig.business.tagline}`;
-const description = `${siteConfig.hero.subheading} ${siteConfig.location.address}.`;
+const description = `${siteConfig.hero.subheading} ${siteConfig.location.address}, ${siteConfig.location.district}.`;
 
 export const metadata: Metadata = {
   title,

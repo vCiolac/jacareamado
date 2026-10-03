@@ -28,105 +28,218 @@ export const siteConfig = {
   ],
 
   hero: {
-    heading: "Cuidado veterinário de qualidade,",
+    // Cada item vira uma linha do título; o destaque fecha o título
+    headingLines: ["Cuidado veterinário", "de verdade,"],
     headingHighlight: "perto de você.",
     subheading:
-      "Atendimento veterinário humano, responsável e acessível para quem faz parte da sua família.",
+      "Do atendimento de rotina à investigação de problemas mais específicos, seu pet encontra acompanhamento veterinário próximo, responsável e acessível.",
     whatsappCta: "Falar no WhatsApp",
-    instagramCta: "Ver Instagram",
-    // Arte principal (ilustração da doutora com os animais).
-    // Ex: "/images/hero-arte.png"
-    image: null as Media,
-    imageAlt:
-      "Ilustração da Dra. Ana Paula Ayres Pedro abraçando cães, gatos, um coelho e o jacaré mascote",
+    instagramCta: "Conhecer no Instagram",
+    // Informação de apoio abaixo dos botões (não são botões)
+    infoHours: "Atendimento de terça a sábado",
+    infoPlace: "Freguesia, Jacarepaguá",
+    // Imagem principal. Quando a arte ilustrada (doutora com os animais)
+    // ficar pronta, troque por ela e use imageFit: "contain".
+    image: "/images/doutora-paciente-westie.jpeg" as Media,
+    imageFit: "cover" as "cover" | "contain",
+    imagePosition: "center 12%",
+    imageAlt: "Dra. Ana Paula Ayres Pedro segurando um paciente no consultório Jacaré Amado",
   },
 
   doctor: {
     eyebrow: "A Doutora",
+    heading: "Cuidado atento em cada fase da vida do seu pet.",
     name: "Dra. Ana Paula Ayres Pedro",
-    role: "Médica-Veterinária",
+    role: "Médica-veterinária",
     registration: "CRMV-RJ 7827",
-    text: "Médica-veterinária com ampla experiência e especialização, oferecendo atendimento a preço popular na Freguesia, Jacarepaguá, ao lado do Prezunic.",
-    // PLACEHOLDER — preencha com as especializações/áreas de atuação reais,
-    // ex: ["Clínica geral de cães e gatos", "..."]. Lista vazia = aviso na tela.
-    specialties: [] as string[],
-    // Foto real da doutora (retrato, idealmente 4:5). Ex: "/images/doutora.jpg"
-    photo: null as Media,
-    photoAlt: "Dra. Ana Paula Ayres Pedro no consultório Jacaré Amado",
+    paragraphs: [
+      "A Dra. Ana Paula é médica-veterinária com especialização em Clínica Médica de Gatos, Dermatologia Veterinária e Nefrologia e Urologia Veterinária.",
+      "No Jacaré Amado, cada atendimento começa pela escuta e por uma avaliação cuidadosa de cada animal. A proposta é unir conhecimento técnico, acompanhamento próximo e uma comunicação clara com o tutor — para que você entenda o que está acontecendo e participe de cada decisão sobre a saúde do seu pet.",
+    ],
+    specialtiesHeading: "Especializações",
+    specialties: [
+      {
+        name: "Clínica Médica de Gatos",
+        text: "Um olhar especialmente direcionado às particularidades da saúde e do comportamento dos felinos.",
+      },
+      {
+        name: "Dermatologia Veterinária",
+        text: "Investigação e acompanhamento de alterações de pele, pelos e ouvidos.",
+      },
+      {
+        name: "Nefrologia e Urologia Veterinária",
+        text: "Acompanhamento de condições relacionadas aos rins e ao sistema urinário.",
+      },
+    ],
+    // Foto real da doutora (retrato, idealmente 4:5)
+    photo: "/images/doutora-paciente-coelho.jpeg" as Media,
+    photoAlt: "Dra. Ana Paula Ayres Pedro com um coelho no colo, na sala de atendimento",
   },
 
-  // Faixa compacta de serviços entre a doutora e a galeria
+  // De onde vem o nome — seção logo depois da doutora
+  origin: {
+    eyebrow: "A origem do nome",
+    heading: "De onde vem o nome Jacaré Amado?",
+    paragraphs: [
+      "O nome nasceu muito antes do consultório.",
+      "A Dra. Ana Paula tinha uma cachorrinha de focinho comprido, com uma pequena mancha em formato de coração no focinho. Pelo jeitinho dela e pelo costume da doutora de chamar com carinho as pessoas de “amado” e “amada”, surgiu um apelido que acabou ficando: Jacaré Amado.",
+      "Com o tempo, aquele apelido cheio de afeto acabou dando nome ao consultório — e hoje carrega um pouco da história que ajudou a inspirar o cuidado oferecido por aqui.",
+    ],
+    quote: "Jacaré Amado não nasceu de um endereço. Nasceu de um apelido.",
+    // Foto da história (ex: a doutora com a cachorrinha). Com null, a seção
+    // fica só com o texto, centralizada.
+    photo: "/images/paciente-pitbull.jpeg" as Media,
+    photoAlt: "Veterinária abraçada a um paciente cão no consultório",
+  },
+
   services: {
-    heading: "Atendimentos no consultório",
+    eyebrow: "Serviços",
+    heading: "Cuidado completo começa com o diagnóstico certo.",
+    text: "O Jacaré Amado oferece atendimento clínico e exames que ajudam a investigar a saúde do seu animal e definir os próximos passos de forma mais segura.",
     items: [
-      { name: "Consultas", icon: "stethoscope" },
-      { name: "Vacinas", icon: "syringe" },
-      { name: "Exames", icon: "flask" },
-      { name: "Ultrassonografia", icon: "waves" },
-      { name: "Radiografia", icon: "scan" },
-      { name: "Soroterapia", icon: "droplet" },
+      {
+        name: "Consultas",
+        icon: "stethoscope",
+        text: "Avaliação clínica, acompanhamento e orientação para cada etapa da vida do seu pet.",
+      },
+      {
+        name: "Vacinas",
+        icon: "syringe",
+        text: "Protocolos de vacinação de acordo com as necessidades de cada animal.",
+      },
+      {
+        name: "Exames",
+        icon: "flask",
+        text: "Apoio diagnóstico para investigar sintomas e acompanhar a evolução dos pacientes.",
+      },
+      {
+        name: "Ultrassonografia",
+        icon: "waves",
+        text: "Avaliação por imagem para auxiliar na investigação de diferentes condições clínicas.",
+      },
+      {
+        name: "Radiografia",
+        icon: "scan",
+        text: "Exames de imagem que ajudam o veterinário a enxergar além do que o exame físico consegue mostrar.",
+      },
+      {
+        name: "Soroterapia",
+        icon: "droplet",
+        text: "Suporte e hidratação quando o quadro clínico exige acompanhamento e reposição de fluidos.",
+      },
     ],
   },
 
   gallery: {
     eyebrow: "Galeria",
-    heading: "Conheça o consultório",
-    text: "O espaço, o cuidado e alguns dos pacientes que já passaram por aqui.",
-    // Fotos do carrossel (proporção 4:3). Troque `src` e ajuste o `alt`
-    // descrevendo o que aparece na foto.
+    heading: "Um pouquinho do Jacaré Amado",
+    text: "Conheça o espaço, os atendimentos e alguns dos pacientes que já passaram por aqui.",
+    // Fotos do carrossel (proporção 4:5, retrato). Troque `src` e ajuste o
+    // `alt` descrevendo o que aparece na foto. `position` ajusta o enquadramento.
+    // (fachada.jpeg ficou de fora: mostra o horário antigo "Seg à Sáb")
     items: [
-      { src: null as Media, alt: "Fachada do consultório", placeholder: "Fachada" },
-      { src: null as Media, alt: "Recepção do consultório", placeholder: "Recepção" },
-      { src: null as Media, alt: "Sala de atendimento", placeholder: "Consultório" },
-      { src: null as Media, alt: "Equipamentos do consultório", placeholder: "Equipamentos" },
-      { src: null as Media, alt: "Paciente atendido no consultório", placeholder: "Paciente" },
-      { src: null as Media, alt: "Paciente atendido no consultório", placeholder: "Paciente" },
+      {
+        src: "/images/doutora-paciente-caramelo.jpeg" as Media,
+        alt: "Veterinária abraçada a um paciente cão caramelo no consultório",
+        placeholder: "Paciente",
+        position: "center 30%",
+      },
+      {
+        src: "/images/ultrassom-gato.jpeg" as Media,
+        alt: "Gato sendo examinado no ultrassom do consultório",
+        placeholder: "Ultrassom",
+        position: "right center",
+      },
+      {
+        src: "/images/paciente-poodle.jpeg" as Media,
+        alt: "Paciente poodle sentado na mesa de atendimento",
+        placeholder: "Paciente",
+        position: "center 60%",
+      },
+      {
+        src: "/images/doutora-paciente-pretoebranco.jpeg" as Media,
+        alt: "Veterinária com um paciente cão preto e branco na sala de atendimento",
+        placeholder: "Paciente",
+        position: "center 35%",
+      },
+      {
+        src: "/images/radiografia-coelho.jpeg" as Media,
+        alt: "Dra. Ana Paula e a equipe de radiografia com um coelho no colo",
+        placeholder: "Radiografia",
+        position: "35% center",
+      },
+      {
+        src: "/images/equipe-paciente-gato.jpeg" as Media,
+        alt: "Profissional da equipe com um gato preto e branco no colo",
+        placeholder: "Paciente",
+        position: "center 50%",
+      },
+      {
+        src: "/images/paciente-shihtzu.jpeg" as Media,
+        alt: "Paciente shih-tzu de coleira rosa na recepção",
+        placeholder: "Paciente",
+        position: "center 35%",
+      },
+      {
+        src: "/images/doutora-equipe-coelho.jpeg" as Media,
+        alt: "Dra. Ana Paula e um colega da equipe com um coelho no colo",
+        placeholder: "Equipe",
+        position: "center 45%",
+      },
     ],
   },
 
   video: {
-    heading: "Um tour pelo consultório",
-    text: "Dê o play e veja por dentro onde seu pet vai ser atendido.",
-    // Vídeo gravado na clínica (MP4 H.264, idealmente até ~15 MB).
-    // Ex: "/videos/tour.mp4"
-    src: null as Media,
-    // Capa do vídeo (imagem 16:9). Ex: "/images/tour-capa.jpg"
-    poster: null as Media,
+    heading: "Conheça o consultório por dentro",
+    text: "Quer saber onde seu pet será atendido? Dá uma olhada no nosso espaço e conheça um pouco da rotina do Jacaré Amado.",
+    // Vídeo gravado na clínica (MP4 H.264, idealmente até ~15 MB)
+    src: "/videos/tour-consultorio.mp4" as Media,
+    // Capa do vídeo (mesma proporção do vídeo)
+    poster: "/images/tour-capa.jpg" as Media,
+    // "portrait" para vídeo vertical (celular, 9:16), "landscape" para 16:9
+    orientation: "portrait" as "portrait" | "landscape",
     title: "Tour pelo consultório Jacaré Amado",
   },
 
-  // Mosaico pequeno de fotos extras, abaixo do vídeo (use 5 fotos).
-  // A primeira aparece maior.
-  mosaic: [
-    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 1" },
-    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 2" },
-    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 3" },
-    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 4" },
-    { src: null as Media, alt: "Paciente no consultório", placeholder: "Foto extra 5" },
-  ],
+  // Mosaico opcional de fotos extras, abaixo do vídeo (até 5; a primeira
+  // aparece maior). Lista vazia = o mosaico não aparece.
+  // Ex: { src: "/images/extra-1.jpg", alt: "Descrição da foto", placeholder: "Extra" }
+  mosaic: [] as { src: Media; alt: string; placeholder: string }[],
 
-  about: {
-    eyebrow: "Sobre o Jacaré Amado",
-    heading: "Desde sempre cuidando de perto",
-    text: "Tradição, carinho e compromisso com a saúde do seu pet. Aqui, cada animal é recebido com calma e atenção, com atendimento de qualidade a preço popular, pertinho de você.",
+  instagram: {
+    eyebrow: "Instagram",
+    heading: "Acompanhe nossa rotina",
+    text: "Atendimentos, pacientes, informações sobre saúde animal e um pouco do dia a dia do Jacaré Amado.",
+    cta: "Seguir no Instagram",
   },
 
   location: {
     eyebrow: "Como chegar",
-    heading: "Venha nos visitar",
-    hours: "Terça a Sábado • 10h às 18h",
-    address: "Estrada de Jacarepaguá, 7187 — Loja A — Freguesia",
+    heading: "Agora é só seguir as patinhas.",
+    text: "Estamos na Freguesia, em Jacarepaguá, com acesso fácil para quem vem da região.",
+    address: "Estrada de Jacarepaguá, 7187 — Loja A",
+    district: "Freguesia — Jacarepaguá",
     reference: "Ao lado do Prezunic",
+    hours: "De terça a sábado",
+    hoursDetail: "Das 10h às 18h",
     phones: ["(21) 3190-5544", "(21) 98229-3526"],
-    // Endereço usado no mapa incorporado e no link "Abrir no Google Maps"
+    routeCta: "Abrir rota",
+    // Endereço usado no mapa incorporado e no botão "Abrir rota"
     mapQuery: "Estrada de Jacarepaguá, 7187, Loja A, Freguesia, Rio de Janeiro",
+  },
+
+  finalCta: {
+    heading: "Seu pet precisa de atendimento?",
+    text: "Converse diretamente com o Jacaré Amado pelo WhatsApp e tire suas dúvidas antes de vir.",
+    whatsappCta: "Falar no WhatsApp",
+    instagramCta: "Ver Instagram",
   },
 
   contact: {
     whatsappNumber: "5521982293526", // formato internacional, só dígitos
     whatsappMessage: "Olá! Gostaria de agendar uma consulta para o meu pet.",
-    // PLACEHOLDER — cole aqui o link do perfil, ex: "https://www.instagram.com/usuario"
-    instagramUrl: "",
+    instagramUrl: "https://www.instagram.com/jacareamadoveterinariapopular",
+    instagramHandle: "@jacareamadoveterinariapopular",
   },
 
   footer: {

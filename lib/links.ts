@@ -16,9 +16,10 @@ export function getMapsEmbedLink() {
   return `https://www.google.com/maps?q=${q}&output=embed`;
 }
 
+// Abre o Google Maps já traçando a rota até o consultório
 export function getMapsDirectionsLink() {
   const q = encodeURIComponent(siteConfig.location.mapQuery);
-  return `https://www.google.com/maps/search/?api=1&query=${q}`;
+  return `https://www.google.com/maps/dir/?api=1&destination=${q}`;
 }
 
 // "(21) 3190-5544" -> "tel:+552131905544"

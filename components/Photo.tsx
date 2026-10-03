@@ -11,6 +11,8 @@ type PhotoProps = {
   sizes: string;
   priority?: boolean;
   fit?: "cover" | "contain";
+  // Enquadramento da foto quando cortada (CSS object-position, ex: "center 20%")
+  position?: string;
   className?: string;
 };
 
@@ -24,6 +26,7 @@ export default function Photo({
   sizes,
   priority,
   fit = "cover",
+  position,
   className = "",
 }: PhotoProps) {
   if (src) {
@@ -34,6 +37,7 @@ export default function Photo({
         fill
         sizes={sizes}
         priority={priority}
+        style={position ? { objectPosition: position } : undefined}
         className={`${fit === "contain" ? "object-contain" : "object-cover"} ${className}`}
       />
     );

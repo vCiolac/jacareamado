@@ -1,4 +1,4 @@
-import { Clock, MapPin, Phone, MessageCircle, ExternalLink } from "lucide-react";
+import { Clock, MapPin, Phone, MessageCircle, Navigation } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import {
   getWhatsappLink,
@@ -6,7 +6,10 @@ import {
   getMapsDirectionsLink,
   getPhoneLink,
 } from "@/lib/links";
+import { ctaPrimary } from "./cta";
 
+// Destino da animação das patinhas (PawTrail): mantenha o id "como-chegar",
+// o título com tabIndex={-1} e o bloco #mapa.
 export default function LocationSection() {
   const { location } = siteConfig;
 
@@ -27,10 +30,11 @@ export default function LocationSection() {
           <h2
             id="como-chegar-titulo"
             tabIndex={-1}
-            className="mt-3 font-display text-3xl font-bold text-navy outline-none sm:text-4xl"
+            className="mt-3 font-display text-3xl font-bold leading-tight text-navy outline-none sm:text-4xl"
           >
             {location.heading}
           </h2>
+          <p className="mt-4 text-lg leading-relaxed text-ink/70">{location.text}</p>
 
           <dl className="mt-8 flex flex-col gap-6 text-base">
             <div className="flex gap-4">
@@ -39,26 +43,23 @@ export default function LocationSection() {
                 <span className="sr-only">Endereço</span>
               </dt>
               <dd className="text-ink/80">
-                {location.address}
+                <span className="block font-medium text-navy">{location.address}</span>
+                {location.district}
                 <span className="block text-sm text-ink/55">{location.reference}</span>
-                <a
-                  href={getMapsDirectionsLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`gap-1 text-sm ${linkClass}`}
-                >
-                  Abrir no Google Maps
-                  <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-                </a>
               </dd>
             </div>
 
             <div className="flex gap-4">
               <dt>
                 <Clock className="mt-0.5 h-5 w-5 text-sky-deep" strokeWidth={2} aria-hidden />
-                <span className="sr-only">Horário</span>
+                <span className="sr-only">Funcionamento</span>
               </dt>
-              <dd className="text-ink/80">{location.hours}</dd>
+              <dd className="text-ink/80">
+                <span className="block font-medium text-navy">{location.hours}</span>
+                {location.hoursDetail && (
+                  <span className="block text-sm text-ink/55">{location.hoursDetail}</span>
+                )}
+              </dd>
             </div>
 
             <div className="flex gap-4">
@@ -80,7 +81,7 @@ export default function LocationSection() {
                 <MessageCircle className="mt-0.5 h-5 w-5 text-sky-deep" strokeWidth={2} aria-hidden />
                 <span className="sr-only">WhatsApp</span>
               </dt>
-              <dd>
+              <dd className="-my-2.5">
                 <a
                   href={getWhatsappLink()}
                   target="_blank"
@@ -92,14 +93,24 @@ export default function LocationSection() {
               </dd>
             </div>
           </dl>
+
+          <a
+            href={getMapsDirectionsLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${ctaPrimary} mt-9`}
+          >
+            <Navigation className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+            {location.routeCta}
+          </a>
         </div>
 
         <div
           id="mapa"
-          className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-navy/10 bg-cream md:aspect-auto md:h-[440px]"
+          className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-navy/10 bg-cream md:aspect-auto md:h-[520px]"
         >
           <iframe
-            title={`Mapa: ${location.address}`}
+            title={`Mapa: ${location.address}, ${location.district}`}
             src={getMapsEmbedLink()}
             className="absolute inset-0 h-full w-full border-0"
             loading="lazy"
