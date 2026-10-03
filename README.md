@@ -8,13 +8,15 @@ Vercel.
 
 1. Header — logo + "A Doutora", "Galeria", "Como chegar" (com a patinha)
 2. Hero — headline + **dois CTAs**: WhatsApp e Instagram
-3. A Doutora — foto, nome, CRMV, especializações
-4. Faixa compacta de serviços
-5. Galeria em carrossel (swipe no mobile, setas + indicadores, sem autoplay)
-6. Vídeo/tour (play manual; o vídeo só carrega após o clique) + mosaico de fotos
-7. Sobre
-8. Como chegar (`#como-chegar`) — mapa, endereço, horário, telefones
-9. Footer
+3. A Doutora — foto, identificação, CRMV e especializações
+4. Origem do nome (`#origem`) — a história do apelido "Jacaré Amado"
+5. Serviços — título, texto e os seis atendimentos com descrição
+6. Galeria em carrossel (swipe no mobile, setas + indicadores, sem autoplay)
+7. Vídeo/tour (play manual; o vídeo só carrega após o clique) + mosaico opcional
+8. Instagram — chamada para seguir o perfil
+9. Como chegar (`#como-chegar`) — mapa, endereço, funcionamento, telefones, "Abrir rota"
+10. CTA final — WhatsApp + Instagram
+11. Footer
 
 ## Como editar o conteúdo
 
@@ -35,9 +37,9 @@ aparecem no site como caixas pontilhadas com a etiqueta "placeholder".
    - `business.logo` → `"/images/logo.png"`
    - `hero.image` → `"/images/hero-arte.png"` (arte da doutora com os animais)
    - `doctor.photo` → `"/images/doutora.jpg"` (retrato 4:5)
-   - `gallery.items[n].src` → fotos do carrossel (4:3) — ajuste também o `alt`
+   - `gallery.items[n].src` → fotos do carrossel (4:5, retrato) — ajuste também o `alt`
    - `mosaic[n].src` → fotos extras (a primeira aparece maior)
-   - `video.src` → `"/videos/tour.mp4"` e `video.poster` → `"/images/tour-capa.jpg"` (16:9)
+   - `video.src` → `"/videos/tour-consultorio.mp4"`, `video.poster` → `"/images/tour-capa.jpg"` e `video.orientation` (`"portrait"` para vídeo de celular, `"landscape"` para 16:9)
 
 As fotos são otimizadas automaticamente pelo `next/image` (AVIF/WebP, lazy
 load). Para o vídeo, prefira MP4 H.264 comprimido (idealmente até ~15 MB).

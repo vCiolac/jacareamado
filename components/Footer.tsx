@@ -14,7 +14,9 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
         <div className="flex flex-col items-center gap-2 md:items-start">
           <Logo size="sm" />
-          <p className="text-sm text-ink/60">{siteConfig.location.address}</p>
+          <p className="text-sm text-ink/60">
+            {siteConfig.location.address} · {siteConfig.location.district}
+          </p>
         </div>
 
         <ul className="flex items-center gap-6">

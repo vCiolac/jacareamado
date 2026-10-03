@@ -4,6 +4,7 @@ import Photo from "./Photo";
 // Pequena seleção complementar — a primeira foto ocupa o bloco maior
 export default function PhotoMosaic() {
   const photos = siteConfig.mosaic.slice(0, 5);
+  if (photos.length === 0) return null;
 
   return (
     <ul className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-4 md:grid-cols-4 md:grid-rows-2">

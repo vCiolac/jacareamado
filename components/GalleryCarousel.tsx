@@ -121,13 +121,14 @@ export default function GalleryCarousel() {
                 key={i}
                 aria-roledescription="slide"
                 aria-label={`${i + 1} de ${gallery.items.length}`}
-                className="relative aspect-[4/3] shrink-0 basis-full snap-start overflow-hidden rounded-3xl sm:basis-[calc((100%-1.25rem)/2)] lg:basis-[calc((100%-2.5rem)/3)]"
+                className="relative aspect-[4/5] shrink-0 basis-[85%] snap-start overflow-hidden rounded-3xl sm:basis-[calc((100%-1.25rem)/2)] lg:basis-[calc((100%-2.5rem)/3)]"
               >
                 <Photo
                   src={item.src}
                   alt={item.alt}
                   placeholder={item.placeholder}
                   configKey={`gallery.items[${i}]`}
+                  position={item.position}
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="rounded-3xl"
                 />

@@ -11,8 +11,8 @@ export default function DoctorSection() {
       aria-labelledby="doutora-titulo"
       className="scroll-mt-36 bg-white py-20 sm:scroll-mt-24 md:py-28"
     >
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 md:grid-cols-2 md:gap-16">
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
+      <div className="mx-auto grid max-w-6xl items-start gap-10 px-5 md:grid-cols-2 md:gap-16">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl md:sticky md:top-28">
           <Photo
             src={doctor.photo}
             alt={doctor.photoAlt}
@@ -23,7 +23,7 @@ export default function DoctorSection() {
           />
         </div>
 
-        <div>
+        <div className="md:pt-4">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-magenta-deep">
             {doctor.eyebrow}
           </p>
@@ -31,39 +31,48 @@ export default function DoctorSection() {
             id="doutora-titulo"
             className="mt-3 font-display text-3xl font-bold leading-tight text-navy sm:text-4xl"
           >
-            {doctor.name}
+            {doctor.heading}
           </h2>
 
-          <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-base text-ink/70">
-            <span>{doctor.role}</span>
-            <span aria-hidden className="h-1 w-1 rounded-full bg-ink/30" />
-            <span className="inline-flex items-center gap-1.5 font-semibold text-navy">
-              <BadgeCheck className="h-4 w-4 text-sky-deep" strokeWidth={2.2} aria-hidden />
-              {doctor.registration}
-            </span>
-          </p>
+          {/* Identificação da veterinária */}
+          <div className="mt-6 border-l-2 border-magenta pl-4">
+            <p className="font-display text-xl font-bold text-navy">{doctor.name}</p>
+            <p className="mt-0.5 flex flex-wrap items-center gap-x-2 text-sm text-ink/70">
+              <span>{doctor.role}</span>
+              <span aria-hidden className="text-ink/30">
+                |
+              </span>
+              <span className="inline-flex items-center gap-1.5 font-semibold text-navy">
+                <BadgeCheck className="h-4 w-4 text-sky-deep" strokeWidth={2.2} aria-hidden />
+                {doctor.registration}
+              </span>
+            </p>
+          </div>
 
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink/70">{doctor.text}</p>
+          <div className="mt-6 flex max-w-lg flex-col gap-4 text-lg leading-relaxed text-ink/70">
+            {doctor.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </div>
 
-          <div className="mt-8">
-            <h3 className="text-sm font-semibold text-navy">Especializações e áreas de atuação</h3>
-            {doctor.specialties.length > 0 ? (
-              <ul className="mt-3 flex flex-wrap gap-2">
-                {doctor.specialties.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-full bg-sky/10 px-4 py-1.5 text-sm font-medium text-navy"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              // PLACEHOLDER: preencha `doctor.specialties` no site-config
-              <p className="mt-3 inline-flex rounded-full border border-dashed border-navy/30 px-4 py-1.5 text-sm text-navy/60">
-                Especializações a confirmar · placeholder · doctor.specialties
-              </p>
-            )}
+          {/* Especializações — lista editorial, sem cards */}
+          <div className="mt-10 max-w-lg">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-navy">
+              {doctor.specialtiesHeading}
+            </h3>
+            <dl className="mt-4 divide-y divide-navy/10 border-y border-navy/10">
+              {doctor.specialties.map((item) => (
+                <div key={item.name} className="flex gap-4 py-4">
+                  <span aria-hidden className="mt-2 h-2 w-2 shrink-0 rounded-full bg-magenta" />
+                  <div>
+                    <dt className="font-display text-lg font-bold leading-snug text-navy">
+                      {item.name}
+                    </dt>
+                    <dd className="mt-1 text-[15px] leading-relaxed text-ink/65">{item.text}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </div>

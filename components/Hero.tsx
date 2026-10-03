@@ -2,12 +2,10 @@ import { MessageCircle, Instagram, Clock, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { getWhatsappLink, getInstagramLink } from "@/lib/links";
 import Photo from "./Photo";
-
-const ctaBase =
-  "inline-flex min-h-[56px] w-full items-center justify-center gap-2.5 rounded-full px-7 text-base font-semibold whitespace-nowrap transition-colors sm:w-auto";
+import { ctaBase, ctaPrimary, ctaOutline } from "./cta";
 
 export default function Hero() {
-  const { hero, location } = siteConfig;
+  const { hero } = siteConfig;
   const instagramLink = getInstagramLink();
 
   return (
@@ -21,21 +19,25 @@ export default function Hero() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-12 md:grid-cols-[1.05fr_1fr] md:pb-28 md:pt-20">
         <div>
           <h1 className="font-display text-4xl font-bold leading-[1.08] text-navy sm:text-5xl lg:text-[3.5rem]">
-            {hero.heading}{" "}
-            <span className="text-magenta">{hero.headingHighlight}</span>
+            {hero.headingLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+            <span className="block text-magenta">{hero.headingHighlight}</span>
           </h1>
 
           <p className="mt-5 max-w-md text-lg leading-relaxed text-ink/70">
             {hero.subheading}
           </p>
 
-          {/* Os dois únicos CTAs principais da página */}
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+          {/* Os dois únicos CTAs principais da primeira dobra */}
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={getWhatsappLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${ctaBase} bg-magenta-deep text-white shadow-md shadow-magenta/20 hover:bg-magenta-darker`}
+              className={ctaPrimary}
             >
               <MessageCircle className="h-5 w-5" strokeWidth={2.2} aria-hidden />
               {hero.whatsappCta}
@@ -46,7 +48,7 @@ export default function Hero() {
                 href={instagramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${ctaBase} border-2 border-navy bg-white text-navy hover:bg-navy hover:text-white`}
+                className={ctaOutline}
               >
                 <Instagram className="h-5 w-5" strokeWidth={2.2} aria-hidden />
                 {hero.instagramCta}
@@ -68,14 +70,17 @@ export default function Hero() {
           </div>
 
           {/* Informação de apoio — não são botões */}
-          <ul className="mt-8 flex flex-col gap-2 text-sm text-ink/60">
+          <ul className="mt-8 flex flex-col gap-2 text-sm text-ink/60 sm:flex-row sm:items-center sm:gap-0">
             <li className="flex items-center gap-2">
               <Clock className="h-4 w-4 shrink-0 text-sky-deep" strokeWidth={2} aria-hidden />
-              {location.hours}
+              {hero.infoHours}
+            </li>
+            <li aria-hidden className="mx-3 hidden text-ink/30 sm:block">
+              •
             </li>
             <li className="flex items-center gap-2">
               <MapPin className="h-4 w-4 shrink-0 text-sky-deep" strokeWidth={2} aria-hidden />
-              {location.address}
+              {hero.infoPlace}
             </li>
           </ul>
         </div>
@@ -88,7 +93,8 @@ export default function Hero() {
             configKey="hero.image"
             sizes="(min-width: 768px) 50vw, 90vw"
             priority
-            fit="contain"
+            fit={hero.imageFit}
+            position={hero.imagePosition}
             className="rounded-[2.5rem]"
           />
         </div>
