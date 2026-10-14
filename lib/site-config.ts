@@ -61,7 +61,7 @@ export const siteConfig = {
   },
 
   services: {
-    eyebrow: "Serviços",
+    eyebrow: "Nossos serviços",
     heading: "Cuidado completo começa com o diagnóstico certo.",
     // Uma linha curta por serviço — mantenha enxuto
     items: [
@@ -75,7 +75,7 @@ export const siteConfig = {
   },
 
   doctor: {
-    eyebrow: "A Doutora",
+    eyebrow: "Sobre a Doutora",
     heading: "Cuidado atento em cada fase da vida do seu pet.",
     name: "Dra. Ana Paula Ayres Pedro",
     role: "Médica-veterinária",

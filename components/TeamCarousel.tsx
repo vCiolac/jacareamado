@@ -62,7 +62,7 @@ export default function TeamCarousel() {
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-magenta-deep">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-magenta-deep">
               {team.eyebrow}
             </p>
             <h2

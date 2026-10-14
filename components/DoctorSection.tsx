@@ -1,4 +1,4 @@
-import { BadgeCheck, Heart } from "lucide-react";
+import { ClipboardList, Heart, UserRound } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import Photo from "./Photo";
 
@@ -9,7 +9,7 @@ export default function DoctorSection() {
   return (
     <section id="doutora" aria-labelledby="doutora-titulo" className="scroll-mt-20 py-10 md:py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
-        <div className="grid items-start gap-6 rounded-3xl border border-navy/5 bg-white p-3 shadow-sm sm:p-5 md:grid-cols-[0.85fr_1.15fr] md:gap-10 md:p-6">
+        <div className="grid items-center gap-6 rounded-3xl border border-magenta/15 bg-white p-3 shadow-lg shadow-navy/5 sm:p-5 md:grid-cols-[0.85fr_1.15fr] md:gap-10 md:p-6">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-[4/5]">
             <Photo
               src={doctor.photo}
@@ -23,30 +23,42 @@ export default function DoctorSection() {
           </div>
 
           <div className="px-1 pb-2 md:px-0 md:py-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-magenta-deep">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-magenta-deep">
               {doctor.eyebrow}
             </p>
             <h2
               id="doutora-titulo"
-              className="mt-2 font-display text-2xl font-bold leading-tight text-navy sm:text-3xl"
+              className="mt-2 font-display text-[1.7rem] font-bold leading-tight text-navy sm:text-4xl"
             >
               {doctor.heading}
             </h2>
 
-            <p className="mt-4 font-display text-base font-bold text-navy">{doctor.name}</p>
-            <p className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-ink/70">
-              <span>{doctor.role}</span>
-              <span aria-hidden className="text-ink/30">•</span>
-              <span className="inline-flex items-center gap-1 font-semibold text-navy">
-                <BadgeCheck className="h-4 w-4 text-sky-deep" strokeWidth={2.2} aria-hidden />
-                {doctor.registration}
-              </span>
-            </p>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink/75 sm:text-base">{doctor.text}</p>
 
-            <p className="mt-3 text-[15px] leading-relaxed text-ink/70 sm:text-base">{doctor.text}</p>
+            {/* Identificação em selos, como na arte aprovada */}
+            <div className="mt-5 flex flex-wrap gap-x-8 gap-y-4">
+              <div className="flex items-center gap-3">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-magenta-deep text-white">
+                  <UserRound className="h-6 w-6" strokeWidth={2} aria-hidden />
+                </span>
+                <span className="leading-tight">
+                  <span className="block font-display text-base font-bold text-navy">{doctor.name}</span>
+                  <span className="text-sm text-ink/65">{doctor.role}</span>
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sky/20 text-navy">
+                  <ClipboardList className="h-6 w-6" strokeWidth={2} aria-hidden />
+                </span>
+                <span className="leading-tight">
+                  <span className="block font-display text-base font-bold text-navy">{doctor.registration}</span>
+                  <span className="text-sm text-ink/65">Registro profissional</span>
+                </span>
+              </div>
+            </div>
 
             <h3 className="sr-only">Especializações</h3>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            <ul className="mt-5 flex flex-wrap gap-2">
               {doctor.specialties.map((item) => (
                 <li
                   key={item}

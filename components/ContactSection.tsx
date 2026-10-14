@@ -25,7 +25,7 @@ export default function ContactSection() {
         <div className="p-6 sm:p-8 md:p-10">
           <h2
             id="contato-titulo"
-            className="font-display text-2xl font-bold leading-tight text-white sm:text-3xl"
+            className="font-display text-[1.7rem] font-bold leading-tight text-white sm:text-4xl"
           >
             {contactSection.heading}
           </h2>
@@ -94,7 +94,7 @@ export default function ContactSection() {
         </div>
 
         <div className="px-3 pb-3 md:p-4 md:pl-0">
-          <div className="relative h-[240px] w-full overflow-hidden rounded-2xl bg-cream md:h-full md:min-h-[380px]">
+          <div className="relative h-[240px] w-full overflow-hidden rounded-2xl border-4 border-white bg-cream md:h-full md:min-h-[380px]">
             <iframe
               title={`Mapa: ${contact.address}, ${contact.district}`}
               src={getMapsEmbedLink()}

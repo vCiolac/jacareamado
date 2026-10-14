@@ -19,14 +19,14 @@ export default function Footer() {
           {instagramLink && (
             <li>
               <a href={instagramLink} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                <Instagram className="h-4 w-4" aria-hidden />
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-magenta-deep text-white"><Instagram className="h-4 w-4" aria-hidden /></span>
                 Instagram
               </a>
             </li>
           )}
           <li>
             <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className={linkClass}>
-              <MessageCircle className="h-4 w-4" aria-hidden />
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-magenta-deep text-white"><MessageCircle className="h-4 w-4" aria-hidden /></span>
               WhatsApp
             </a>
           </li>

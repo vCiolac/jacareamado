@@ -27,16 +27,16 @@ export default function Services() {
     <section
       id="servicos"
       aria-labelledby="servicos-titulo"
-      className="scroll-mt-20 bg-white py-10 md:py-14"
+      className="scroll-mt-20 py-10 md:py-14"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
         <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-magenta-deep">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-magenta-deep">
             {services.eyebrow}
           </p>
           <h2
             id="servicos-titulo"
-            className="mx-auto mt-2 max-w-xl font-display text-2xl font-bold leading-tight text-navy sm:text-3xl"
+            className="mx-auto mt-2 max-w-xl font-display text-[1.7rem] font-bold leading-tight text-navy sm:text-4xl"
           >
             {services.heading}
           </h2>
@@ -45,7 +45,7 @@ export default function Services() {
         <ul
           tabIndex={0}
           aria-label="Lista de serviços (deslize para ver mais)"
-          className="no-scrollbar -mx-4 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-5 sm:scroll-px-5 sm:px-5 lg:mx-0 lg:grid lg:grid-cols-6 lg:overflow-visible lg:px-0"
+          className="no-scrollbar -mx-4 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-3 pt-1 sm:-mx-5 sm:scroll-px-5 sm:px-5 lg:mx-0 lg:grid lg:grid-cols-6 lg:overflow-visible lg:px-0"
         >
           {services.items.map((item, i) => {
             const Icon = ICONS[item.icon] ?? Stethoscope;
@@ -53,16 +53,16 @@ export default function Services() {
             return (
               <li
                 key={item.name}
-                className="flex shrink-0 basis-[44%] snap-start flex-col items-center rounded-2xl border border-navy/10 bg-cream/60 px-2 py-4 text-center sm:basis-[30%] lg:basis-auto"
+                className="flex shrink-0 basis-[44%] snap-start flex-col items-center rounded-2xl border border-navy/5 bg-white px-2 pb-5 pt-5 text-center shadow-md shadow-navy/10 sm:basis-[30%] lg:basis-auto"
               >
                 <span
-                  className={`flex h-12 w-12 items-center justify-center rounded-full ${
-                    pink ? "bg-magenta/10" : "bg-sky/15"
+                  className={`flex h-16 w-16 items-center justify-center rounded-full ${
+                    pink ? "bg-magenta/15" : "bg-sky/20"
                   }`}
                 >
                   <Icon
-                    className={`h-6 w-6 ${pink ? "text-magenta-deep" : "text-sky-deep"}`}
-                    strokeWidth={1.8}
+                    className="h-8 w-8 text-navy"
+                    strokeWidth={1.6}
                     aria-hidden
                   />
                 </span>
