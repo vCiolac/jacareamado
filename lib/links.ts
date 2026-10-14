@@ -12,13 +12,13 @@ export function getInstagramLink() {
 }
 
 export function getMapsEmbedLink() {
-  const q = encodeURIComponent(siteConfig.location.mapQuery);
+  const q = encodeURIComponent(siteConfig.contact.mapQuery);
   return `https://www.google.com/maps?q=${q}&output=embed`;
 }
 
 // Abre o Google Maps já traçando a rota até o consultório
 export function getMapsDirectionsLink() {
-  const q = encodeURIComponent(siteConfig.location.mapQuery);
+  const q = encodeURIComponent(siteConfig.contact.mapQuery);
   return `https://www.google.com/maps/dir/?api=1&destination=${q}`;
 }
 

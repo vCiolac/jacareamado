@@ -3,22 +3,18 @@ import { siteConfig } from "@/lib/site-config";
 import { getWhatsappLink, getInstagramLink } from "@/lib/links";
 import Logo from "./Logo";
 
+// Rodapé baixo: logo, Instagram, WhatsApp, copyright e versículo
 export default function Footer() {
   const year = new Date().getFullYear();
   const instagramLink = getInstagramLink();
   const linkClass =
     "inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-navy transition-colors hover:text-magenta-deep";
 
+  // pb extra no celular para o botão flutuante não cobrir o texto
   return (
-    <footer className="border-t border-navy/10 bg-cream px-5 py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
-        <div className="flex flex-col items-center gap-2 md:items-start">
-          <Logo size="sm" />
-          <p className="text-sm text-ink/60">
-            {siteConfig.location.address} · {siteConfig.location.district}
-          </p>
-        </div>
-
+    <footer className="border-t border-navy/10 bg-cream px-4 pb-24 pt-5 sm:px-5 lg:pb-5">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
+        <Logo size="sm" />
         <ul className="flex items-center gap-6">
           {instagramLink && (
             <li>
@@ -37,7 +33,7 @@ export default function Footer() {
         </ul>
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center gap-2 border-t border-navy/5 pt-6 text-center text-xs text-ink/55 md:flex-row md:justify-between md:text-left">
+      <div className="mx-auto mt-3 flex max-w-6xl flex-col items-center gap-1 border-t border-navy/5 pt-3 text-center text-xs text-ink/60 sm:flex-row sm:justify-between sm:text-left">
         <p>
           © {year} {siteConfig.business.name} — {siteConfig.business.tagline}.
         </p>

@@ -2,47 +2,42 @@
 
 Site em Next.js (App Router) + Tailwind CSS para o consultório veterinário
 **Jacaré Amado**. Feito pra ser simples de editar e fácil de publicar no
-Vercel.
+Vercel. Versão compacta e mobile-first (especificação final de out/2026).
 
-## Estrutura da página
+## Estrutura da página (5 blocos)
 
-1. Header — logo + "A Doutora", "Galeria", "Como chegar" (com a patinha)
-2. Hero — headline + **dois CTAs**: WhatsApp e Instagram
-3. A Doutora — foto, identificação, CRMV e especializações
-4. Origem do nome (`#origem`) — a história do apelido "Jacaré Amado"
-5. Serviços — título, texto e os seis atendimentos com descrição
-6. Galeria em carrossel (swipe no mobile, setas + indicadores, sem autoplay)
-7. Vídeo/tour (play manual; o vídeo só carrega após o clique) + mosaico opcional
-8. Instagram — chamada para seguir o perfil
-9. Como chegar (`#como-chegar`) — mapa, endereço, funcionamento, telefones, "Abrir rota"
-10. CTA final — WhatsApp + Instagram
-11. Footer
+1. Header + Hero (`#inicio`) — logo, menu curto (hamburger no celular),
+   WhatsApp, headline, foto e resumo de horário/endereço/telefones
+2. Serviços (`#servicos`) — os seis serviços; swipe no celular, uma linha no desktop
+3. A Doutora (`#doutora`) — foto, CRMV, especializações e a origem do nome
+4. Nossa equipe (`#equipe`) — carrossel de fotos reais (sem autoplay)
+5. Contato (`#contato`) — WhatsApp, rota, horário, endereço, telefones e mapa
+6. Footer — logo, Instagram, WhatsApp, copyright e versículo
 
 ## Como editar o conteúdo
 
 Tudo o que aparece no site (textos, links, telefone, endereço, horário,
-CRMV, especializações, fotos e vídeo) está em um único arquivo:
+CRMV, especializações e fotos) está em um único arquivo:
 
 ```
 lib/site-config.ts
 ```
 
-Itens ainda sem dado real estão marcados com `PLACEHOLDER` nesse arquivo e
-aparecem no site como caixas pontilhadas com a etiqueta "placeholder".
+**Horário, endereço e telefones ficam só em `contact`** — o hero, o bloco de
+contato e a descrição do site leem dali. Mude em um lugar só.
 
-### Trocar fotos e vídeo
+### Trocar fotos
 
-1. Coloque os arquivos em `public/images/` (fotos) e `public/videos/` (vídeo).
-2. Em `lib/site-config.ts`, troque o `null` pelo caminho, por exemplo:
+1. Coloque os arquivos em `public/images/`.
+2. Em `lib/site-config.ts`, aponte o caminho, por exemplo:
    - `business.logo` → `"/images/logo.png"`
-   - `hero.image` → `"/images/hero-arte.png"` (arte da doutora com os animais)
-   - `doctor.photo` → `"/images/doutora.jpg"` (retrato 4:5)
-   - `gallery.items[n].src` → fotos do carrossel (4:5, retrato) — ajuste também o `alt`
-   - `mosaic[n].src` → fotos extras (a primeira aparece maior)
-   - `video.src` → `"/videos/tour-consultorio.mp4"`, `video.poster` → `"/images/tour-capa.jpg"` e `video.orientation` (`"portrait"` para vídeo de celular, `"landscape"` para 16:9)
+   - `hero.image` → `"/images/hero-arte.png"` (arte da doutora com os animais; use `imageFit: "contain"`)
+   - `doctor.photo` → `"/images/doutora.jpg"`
+   - `team.items[n]` → fotos reais da equipe (4:5). Se tiver nome/função,
+     preencha `caption`; sem isso, aparece só a foto. Não usar banco de imagens/IA.
 
 As fotos são otimizadas automaticamente pelo `next/image` (AVIF/WebP, lazy
-load). Para o vídeo, prefira MP4 H.264 comprimido (idealmente até ~15 MB).
+load abaixo da dobra).
 
 ### Links
 
@@ -52,25 +47,9 @@ No bloco `contact`:
 contact: {
   whatsappNumber: "5521982293526", // DDI + DDD + número, só dígitos
   whatsappMessage: "Olá! Gostaria de agendar uma consulta para o meu pet.",
-  instagramUrl: "https://www.instagram.com/SEU_USUARIO", // hoje vazio = placeholder
+  instagramUrl: "https://www.instagram.com/jacareamadoveterinariapopular",
 }
 ```
-
-### Especializações
-
-Em `doctor.specialties`, liste as áreas de atuação reais:
-
-```ts
-specialties: ["Área 1", "Área 2"],
-```
-
-## Patinha "Como chegar"
-
-Qualquer link com `data-paw-trail` (hoje, o "Como chegar" do topo) dispara
-pegadas pela lateral esquerda enquanto a página rola até a âncora. Lógica em
-`components/PawTrail.tsx`, estilos em `app/globals.css`. Com
-`prefers-reduced-motion` ativo, vai direto para a âncora sem animação; sem
-JavaScript, funciona como link âncora comum.
 
 ## Rodar localmente
 
@@ -109,10 +88,9 @@ Depois abra http://localhost:3000 no navegador.
 
 ```
 app/                 página, layout (metadados) e favicon (icon.svg)
-components/          seções: Header, Hero, DoctorSection, Services,
-                     GalleryCarousel, VideoSection, PhotoMosaic, AboutSection,
-                     LocationSection, Footer, PawTrail (+ Photo, Logo)
+components/          blocos: Header, Hero, Services, DoctorSection,
+                     TeamCarousel, ContactSection, Footer (+ Photo, Logo, cta)
 lib/site-config.ts   todo o conteúdo editável do site
 lib/links.ts         monta links de WhatsApp, Instagram, mapa e telefone
-public/images/       onde colocar as fotos reais
+public/images/       fotos reais
 ```

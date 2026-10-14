@@ -1,91 +1,77 @@
-import { MessageCircle, Instagram, Clock, MapPin } from "lucide-react";
+import { MessageCircle, Clock, MapPin, Phone, ArrowDown } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { getWhatsappLink, getInstagramLink } from "@/lib/links";
+import { getWhatsappLink, getPhoneLink } from "@/lib/links";
 import Photo from "./Photo";
-import { ctaBase, ctaPrimary, ctaOutline } from "./cta";
+import { ctaPrimary, ctaOutline } from "./cta";
 
 export default function Hero() {
-  const { hero } = siteConfig;
-  const instagramLink = getInstagramLink();
+  const { hero, contact } = siteConfig;
 
   return (
-    <section id="inicio" className="relative isolate overflow-hidden">
-      {/* Diagonais da marca, só atrás da arte */}
+    <section id="inicio" aria-labelledby="inicio-titulo" className="relative isolate scroll-mt-20 overflow-hidden">
+      {/* Diagonais da marca (azul, rosa e um fio amarelo) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -right-32 top-16 h-[420px] w-[720px] -rotate-12 rounded-[80px] bg-sky/15 md:top-10" />
-        <div className="absolute -right-40 top-64 h-[260px] w-[620px] -rotate-12 rounded-[80px] bg-magenta/10 md:top-72" />
+        <div className="absolute -right-40 top-[46%] h-[300px] w-[760px] -rotate-12 rounded-[80px] bg-sky/15 md:-right-32 md:top-6 md:h-[420px]" />
+        <div className="absolute -right-48 top-[62%] h-[180px] w-[640px] -rotate-12 rounded-[80px] bg-magenta/10 md:top-72 md:h-[240px]" />
+        <div className="absolute -left-20 bottom-6 h-2 w-72 -rotate-12 rounded-full bg-sun/70 md:bottom-10" />
       </div>
 
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-12 md:grid-cols-[1.05fr_1fr] md:pb-28 md:pt-20">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 pb-10 pt-7 sm:px-5 md:grid-cols-[1.2fr_1fr] md:gap-10 md:pb-16 md:pt-14">
         <div>
-          <h1 className="font-display text-4xl font-bold leading-[1.08] text-navy sm:text-5xl lg:text-[3.5rem]">
-            {hero.headingLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-            <span className="block text-magenta">{hero.headingHighlight}</span>
+          <h1
+            id="inicio-titulo"
+            className="font-display text-[2rem] font-bold leading-[1.1] text-navy sm:text-5xl lg:text-[3.25rem]"
+          >
+            {hero.heading} <span className="text-magenta">{hero.headingHighlight}</span>
           </h1>
 
-          <p className="mt-5 max-w-md text-lg leading-relaxed text-ink/70">
+          <p className="mt-3 max-w-md text-base leading-relaxed text-ink/70 sm:text-lg">
             {hero.subheading}
           </p>
 
-          {/* Os dois únicos CTAs principais da primeira dobra */}
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href={getWhatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={ctaPrimary}
-            >
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className={ctaPrimary}>
               <MessageCircle className="h-5 w-5" strokeWidth={2.2} aria-hidden />
               {hero.whatsappCta}
             </a>
-
-            {instagramLink ? (
-              <a
-                href={instagramLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={ctaOutline}
-              >
-                <Instagram className="h-5 w-5" strokeWidth={2.2} aria-hidden />
-                {hero.instagramCta}
-              </a>
-            ) : (
-              // PLACEHOLDER: aparece assim até `contact.instagramUrl` ser preenchido
-              <span
-                aria-disabled="true"
-                title="Link do Instagram ainda não configurado (contact.instagramUrl)"
-                className={`${ctaBase} relative cursor-not-allowed border-2 border-dashed border-navy/40 bg-white text-navy/60`}
-              >
-                <Instagram className="h-5 w-5" strokeWidth={2.2} aria-hidden />
-                {hero.instagramCta}
-                <span className="absolute -top-2.5 right-5 rounded-full bg-navy px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white">
-                  placeholder
-                </span>
-              </span>
-            )}
+            <a href={hero.secondaryHref} className={ctaOutline}>
+              <ArrowDown className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+              {hero.secondaryCta}
+            </a>
           </div>
 
-          {/* Informação de apoio — não são botões */}
-          <ul className="mt-8 flex flex-col gap-2 text-sm text-ink/60 sm:flex-row sm:items-center sm:gap-0">
-            <li className="flex items-center gap-2">
-              <Clock className="h-4 w-4 shrink-0 text-sky-deep" strokeWidth={2} aria-hidden />
-              {hero.infoHours}
+          {/* Resumo operacional — única vez que aparece antes do contato */}
+          <ul className="mt-6 flex flex-col gap-3 rounded-2xl border border-navy/5 bg-white/90 p-4 text-sm text-ink/80 shadow-sm sm:text-[15px]">
+            <li className="flex items-center gap-3">
+              <Clock className="h-5 w-5 shrink-0 text-magenta-deep" strokeWidth={2} aria-hidden />
+              <span className="font-semibold text-navy">{contact.hours}</span>
             </li>
-            <li aria-hidden className="mx-3 hidden text-ink/30 sm:block">
-              •
+            <li className="flex items-start gap-3">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sky-deep" strokeWidth={2} aria-hidden />
+              <span>
+                {contact.address} · {contact.district}
+              </span>
             </li>
-            <li className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 shrink-0 text-sky-deep" strokeWidth={2} aria-hidden />
-              {hero.infoPlace}
+            <li className="flex items-center gap-3">
+              <Phone className="h-5 w-5 shrink-0 text-sky-deep" strokeWidth={2} aria-hidden />
+              <span className="flex flex-wrap gap-x-1">
+                {contact.phones.map((phone, i) => (
+                  <span key={phone}>
+                    <a
+                      href={getPhoneLink(phone)}
+                      className="inline-flex min-h-[32px] items-center font-medium text-navy underline decoration-navy/25 underline-offset-4 hover:decoration-navy"
+                    >
+                      {phone}
+                    </a>
+                    {i < contact.phones.length - 1 && <span aria-hidden className="text-ink/30"> • </span>}
+                  </span>
+                ))}
+              </span>
             </li>
           </ul>
         </div>
 
-        <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-[2.5rem] md:max-w-none">
+        <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden rounded-[2rem] md:aspect-square md:max-w-none md:rounded-[2.5rem]">
           <Photo
             src={hero.image}
             alt={hero.imageAlt}
@@ -95,7 +81,7 @@ export default function Hero() {
             priority
             fit={hero.imageFit}
             position={hero.imagePosition}
-            className="rounded-[2.5rem]"
+            className="rounded-[2rem] md:rounded-[2.5rem]"
           />
         </div>
       </div>

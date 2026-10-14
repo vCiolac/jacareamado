@@ -18,7 +18,8 @@ const ICONS: Record<string, LucideIcon> = {
   droplet: Droplet,
 };
 
-// Lista em grade com divisórias finas — informativa, mas sem cards altos
+// Celular: faixa com swipe e "peek" do próximo card (menos altura que um grid).
+// Desktop: os seis cards compactos na mesma linha.
 export default function Services() {
   const { services } = siteConfig;
 
@@ -26,34 +27,49 @@ export default function Services() {
     <section
       id="servicos"
       aria-labelledby="servicos-titulo"
-      className="scroll-mt-36 bg-white py-20 sm:scroll-mt-24 md:py-28"
+      className="scroll-mt-20 bg-white py-10 md:py-14"
     >
-      <div className="mx-auto max-w-6xl px-5">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-magenta-deep">
+      <div className="mx-auto max-w-6xl px-4 sm:px-5">
+        <div className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-magenta-deep">
             {services.eyebrow}
           </p>
           <h2
             id="servicos-titulo"
-            className="mt-3 font-display text-3xl font-bold leading-tight text-navy sm:text-4xl"
+            className="mx-auto mt-2 max-w-xl font-display text-2xl font-bold leading-tight text-navy sm:text-3xl"
           >
             {services.heading}
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink/70">{services.text}</p>
         </div>
 
-        <ul className="mt-12 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
-          {services.items.map((item) => {
+        <ul
+          tabIndex={0}
+          aria-label="Lista de serviços (deslize para ver mais)"
+          className="no-scrollbar -mx-4 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-1 sm:-mx-5 sm:scroll-px-5 sm:px-5 lg:mx-0 lg:grid lg:grid-cols-6 lg:overflow-visible lg:px-0"
+        >
+          {services.items.map((item, i) => {
             const Icon = ICONS[item.icon] ?? Stethoscope;
+            const pink = i % 2 === 0;
             return (
-              <li key={item.name} className="flex gap-4 border-t border-navy/10 py-6">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky/10">
-                  <Icon className="h-5 w-5 text-sky-deep" strokeWidth={2} aria-hidden />
+              <li
+                key={item.name}
+                className="flex shrink-0 basis-[44%] snap-start flex-col items-center rounded-2xl border border-navy/10 bg-cream/60 px-2 py-4 text-center sm:basis-[30%] lg:basis-auto"
+              >
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-full ${
+                    pink ? "bg-magenta/10" : "bg-sky/15"
+                  }`}
+                >
+                  <Icon
+                    className={`h-6 w-6 ${pink ? "text-magenta-deep" : "text-sky-deep"}`}
+                    strokeWidth={1.8}
+                    aria-hidden
+                  />
                 </span>
-                <div>
-                  <h3 className="font-display text-lg font-bold text-navy">{item.name}</h3>
-                  <p className="mt-1 text-[15px] leading-relaxed text-ink/65">{item.text}</p>
-                </div>
+                <h3 className="mt-3 font-display text-[15px] font-bold leading-tight text-navy sm:text-base">
+                  {item.name}
+                </h3>
+                <p className="mt-1 text-xs leading-snug text-ink/65 sm:text-[13px]">{item.text}</p>
               </li>
             );
           })}

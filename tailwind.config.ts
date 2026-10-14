@@ -17,6 +17,7 @@ const config: Config = {
           darker: "#A8184F",
         },
         navy: "#0D4A78", // azul principal
+        sun: "#F5C518", // amarelo da marca — só decorativo, nunca texto pequeno no branco
         cream: "#FBF8F3", // base clara
         ink: "#12293D",
       },
