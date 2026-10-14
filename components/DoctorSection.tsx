@@ -1,6 +1,7 @@
 import { ClipboardList, Heart, UserRound } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import Photo from "./Photo";
+import ClinicVideo from "./ClinicVideo";
 
 // Doutora + especializações + origem do nome, num único bloco compacto
 export default function DoctorSection() {
@@ -77,6 +78,21 @@ export default function DoctorSection() {
               </h3>
               <p className="mt-1.5 text-sm leading-relaxed text-ink/75">{doctor.origin.text}</p>
             </div>
+          </div>
+        </div>
+
+        {/* Vídeo do consultório — destino do botão "Conhecer o consultório" */}
+        <div className="mt-5 grid items-center gap-6 overflow-hidden rounded-3xl bg-sky/10 p-5 sm:p-6 md:grid-cols-[1fr_auto] md:gap-12 md:p-8">
+          <div className="text-center md:text-left">
+            <h3 className="font-display text-2xl font-bold leading-tight text-navy sm:text-3xl">
+              {doctor.video.heading}
+            </h3>
+            <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-ink/75 sm:text-base md:mx-0">
+              {doctor.video.text}
+            </p>
+          </div>
+          <div className="w-full md:w-[280px]">
+            <ClinicVideo src={doctor.video.src} poster={doctor.video.poster} title={doctor.video.title} />
           </div>
         </div>
       </div>

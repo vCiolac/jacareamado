@@ -49,7 +49,8 @@ export const siteConfig = {
     subheading:
       "Atendimento veterinário humano, responsável e acessível para quem faz parte da sua família.",
     whatsappCta: "Falar no WhatsApp",
-    // Rola até a apresentação da doutora (não abre outra página)
+    instagramCta: "Visitar nosso Instagram",
+    // Rola até a seção da doutora (texto + vídeo do consultório)
     secondaryCta: "Conhecer o consultório",
     secondaryHref: "#doutora",
     // Imagem principal. Quando a arte ilustrada (doutora com os animais)
@@ -93,6 +94,14 @@ export const siteConfig = {
     origin: {
       heading: "De onde vem o nome Jacaré Amado?",
       text: "O nome Jacaré Amado nasceu de um cão de focinho alongado, que ganhou o apelido de ‘Jacaré’. Como a Dra. Ana Paula tem o costume carinhoso de chamar os animais de ‘amado’ e ‘amada’, o apelido virou ‘Jacaré Amado’ — e acabou dando nome ao consultório.",
+    },
+    // Vídeo do consultório (vertical, 9:16). Só carrega depois do play.
+    video: {
+      heading: "Conheça o consultório por dentro",
+      text: "Quer saber onde seu pet será atendido? Dá uma olhada no nosso espaço e conheça um pouco da rotina do Jacaré Amado.",
+      src: "/videos/tour-consultorio.mp4",
+      poster: "/images/tour-capa.jpg",
+      title: "Tour pelo consultório Jacaré Amado",
     },
   },
 

@@ -1,8 +1,8 @@
-import { MessageCircle, Clock, MapPin, Phone, ArrowDown } from "lucide-react";
+import { MessageCircle, Clock, MapPin, Phone, ArrowDown, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { getWhatsappLink, getPhoneLink } from "@/lib/links";
+import { getWhatsappLink, getPhoneLink, getInstagramLink } from "@/lib/links";
 import Photo from "./Photo";
-import { ctaPrimary, ctaOutline } from "./cta";
+import { ctaPrimary, ctaOutline, ctaOutlinePink } from "./cta";
 
 // Destaca o "•" do horário em rosa, como na arte da marca
 function Hours({ text }: { text: string }) {
@@ -21,6 +21,7 @@ function Hours({ text }: { text: string }) {
 
 export default function Hero() {
   const { hero, contact } = siteConfig;
+  const instagramLink = getInstagramLink();
 
   return (
     <section id="inicio" aria-labelledby="inicio-titulo" className="relative isolate scroll-mt-20 overflow-hidden">
@@ -53,6 +54,12 @@ export default function Hero() {
               <MessageCircle className="h-5 w-5" strokeWidth={2.2} aria-hidden />
               {hero.whatsappCta}
             </a>
+            {instagramLink && (
+              <a href={instagramLink} target="_blank" rel="noopener noreferrer" className={ctaOutlinePink}>
+                <Instagram className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+                {hero.instagramCta}
+              </a>
+            )}
             <a href={hero.secondaryHref} className={ctaOutline}>
               <ArrowDown className="h-5 w-5" strokeWidth={2.2} aria-hidden />
               {hero.secondaryCta}

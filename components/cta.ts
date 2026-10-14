@@ -5,3 +5,5 @@ export const ctaBase =
 export const ctaPrimary = `${ctaBase} bg-magenta-deep text-white shadow-md shadow-magenta/20 hover:bg-magenta-darker`;
 
 export const ctaOutline = `${ctaBase} border-2 border-navy bg-white/90 text-navy hover:bg-navy hover:text-white`;
+
+export const ctaOutlinePink = `${ctaBase} border-2 border-magenta-deep bg-white/90 text-magenta-deep hover:bg-magenta-deep hover:text-white`;
