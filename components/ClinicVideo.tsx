@@ -7,7 +7,8 @@ import { Play } from "lucide-react";
 type Props = { src: string; poster: string; title: string };
 
 // Vídeo vertical do consultório. Só baixa o arquivo depois do clique no play
-// (nada de autoplay com som, nem peso extra no carregamento da página).
+// (sem peso extra no carregamento da página). O arquivo não tem áudio e o
+// player é mudo — o som original foi descartado a pedido da cliente.
 export default function ClinicVideo({ src, poster, title }: Props) {
   const [playing, setPlaying] = useState(false);
 
@@ -19,6 +20,7 @@ export default function ClinicVideo({ src, poster, title }: Props) {
           poster={poster}
           controls
           autoPlay
+          muted
           playsInline
           title={title}
           className="h-full w-full bg-black object-contain"
