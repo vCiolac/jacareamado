@@ -18,7 +18,7 @@ const ICONS: Record<string, LucideIcon> = {
   droplet: Droplet,
 };
 
-// Celular: faixa com swipe e "peek" do próximo card (menos altura que um grid).
+// Celular: todos os seis serviços em grade compacta 3 × 2.
 // Desktop: os seis cards compactos na mesma linha.
 export default function Services() {
   const { services } = siteConfig;
@@ -27,7 +27,7 @@ export default function Services() {
     <section
       id="servicos"
       aria-labelledby="servicos-titulo"
-      className="scroll-mt-20 py-10 md:py-14"
+      className="scroll-mt-20 py-7 md:py-9"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
         <div className="text-center">
@@ -43,9 +43,8 @@ export default function Services() {
         </div>
 
         <ul
-          tabIndex={0}
-          aria-label="Lista de serviços (deslize para ver mais)"
-          className="no-scrollbar -mx-4 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-4 px-4 pb-3 pt-1 sm:-mx-5 sm:scroll-px-5 sm:px-5 lg:mx-0 lg:grid lg:grid-cols-6 lg:overflow-visible lg:px-0"
+          aria-label="Lista de serviços"
+          className="mt-5 grid grid-cols-3 gap-2 pb-2 pt-1 sm:gap-3 lg:grid-cols-6"
         >
           {services.items.map((item, i) => {
             const Icon = ICONS[item.icon] ?? Stethoscope;
@@ -53,10 +52,10 @@ export default function Services() {
             return (
               <li
                 key={item.name}
-                className="flex shrink-0 basis-[44%] snap-start flex-col items-center rounded-2xl border border-navy/5 bg-white px-2 pb-5 pt-5 text-center shadow-md shadow-navy/10 sm:basis-[30%] lg:basis-auto"
+                className="flex shrink-0 basis-[44%] snap-start flex-col items-center rounded-2xl border border-navy/5 bg-white px-2 py-4 text-center shadow-md shadow-navy/10 sm:basis-[30%] lg:basis-auto"
               >
                 <span
-                  className={`flex h-16 w-16 items-center justify-center rounded-full ${
+                  className={`flex h-12 w-12 sm:h-16 sm:w-16 items-center justify-center rounded-full ${
                     pink ? "bg-magenta/15" : "bg-sky/20"
                   }`}
                 >
@@ -66,10 +65,10 @@ export default function Services() {
                     aria-hidden
                   />
                 </span>
-                <h3 className="mt-3 font-display text-[15px] font-bold leading-tight text-navy sm:text-base">
+                <h3 className="mt-3 font-display text-[12px] font-bold leading-tight text-navy sm:text-base">
                   {item.name}
                 </h3>
-                <p className="mt-1 text-xs leading-snug text-ink/65 sm:text-[13px]">{item.text}</p>
+                <p className="mt-1 text-[11px] leading-snug text-ink/65 sm:text-[13px]">{item.text}</p>
               </li>
             );
           })}

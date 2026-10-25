@@ -15,9 +15,9 @@ export const siteConfig = {
   business: {
     name: "Jacaré Amado",
     tagline: "Consultório Veterinário Popular",
-    // Logo em imagem (ex: "/images/logo.png"). Enquanto for null, o nome
-    // aparece escrito com a fonte da marca.
-    logo: null as Media,
+    // Arquivos oficiais pendentes de entrega. Ative somente após adicioná-los.
+    logo: "/images/logo-oficial.png",
+    logoAvailable: false,
   },
 
   // Menu do topo (âncoras dos 5 blocos da página)
@@ -25,7 +25,6 @@ export const siteConfig = {
     { label: "Início", href: "#inicio" },
     { label: "Serviços", href: "#servicos" },
     { label: "A Doutora", href: "#doutora" },
-    { label: "Equipe", href: "#equipe" },
     { label: "Contato", href: "#contato" },
   ],
 
@@ -49,21 +48,27 @@ export const siteConfig = {
     subheading:
       "Atendimento veterinário humano, responsável e acessível para quem faz parte da sua família.",
     whatsappCta: "Falar no WhatsApp",
-    instagramCta: "Visitar nosso Instagram",
-    // Rola até a seção da doutora (texto + vídeo do consultório)
+    // Rola até a seção da doutora
     secondaryCta: "Conhecer o consultório",
     secondaryHref: "#doutora",
-    // Imagem principal. Quando a arte ilustrada (doutora com os animais)
-    // ficar pronta, troque por ela e use imageFit: "contain".
-    image: "/images/doutora-paciente-westie.jpeg" as Media,
-    imageFit: "cover" as "cover" | "contain",
-    imagePosition: "center 15%",
-    imageAlt: "Dra. Ana Paula Ayres Pedro segurando um paciente no consultório Jacaré Amado",
+    // Arte oficial transparente pendente; nunca substituir pela foto real.
+    image: "/images/hero-doutora-animais.png" as Media,
+    imageAvailable: false,
+    imageFit: "contain" as "cover" | "contain",
+    imagePosition: "center",
+    imageAlt: "Ilustração da doutora com vários animais",
+    keepsake: {
+      heading: "Desde sempre cuidando de perto",
+      text: "Tradição, carinho e compromisso com a saúde do seu pet.",
+      image: "/images/gato-cachorro.png",
+      imageAvailable: false,
+      imageAlt: "Gato e cachorro juntos",
+    },
   },
 
   services: {
     eyebrow: "Nossos serviços",
-    heading: "Cuidado completo começa com o diagnóstico certo.",
+    heading: "Tudo que seu pet precisa",
     // Uma linha curta por serviço — mantenha enxuto
     items: [
       { name: "Consultas", icon: "stethoscope", text: "Avaliação e acompanhamento clínico" },
@@ -77,11 +82,11 @@ export const siteConfig = {
 
   doctor: {
     eyebrow: "Sobre a Doutora",
-    heading: "Cuidado atento em cada fase da vida do seu pet.",
+    heading: "Cuidado de verdade, de perto",
     name: "Dra. Ana Paula Ayres Pedro",
     role: "Médica-veterinária",
     registration: "CRMV-RJ 7827",
-    text: "A Dra. Ana Paula é médica-veterinária especializada em Clínica Médica de Gatos, Dermatologia Veterinária e Nefrologia e Urologia Veterinária. O atendimento é próximo e explicado com clareza ao tutor.",
+    text: "Atendimento próximo, responsável e explicado com clareza ao tutor, com carinho por quem faz parte da sua família.",
     specialties: [
       "Clínica Médica de Gatos",
       "Dermatologia Veterinária",
@@ -94,14 +99,6 @@ export const siteConfig = {
     origin: {
       heading: "De onde vem o nome Jacaré Amado?",
       text: "O nome Jacaré Amado nasceu de um cão de focinho alongado, que ganhou o apelido de ‘Jacaré’. Como a Dra. Ana Paula tem o costume carinhoso de chamar os animais de ‘amado’ e ‘amada’, o apelido virou ‘Jacaré Amado’ — e acabou dando nome ao consultório.",
-    },
-    // Vídeo do consultório (vertical, 9:16). Só carrega depois do play.
-    video: {
-      heading: "Conheça o consultório por dentro",
-      text: "Quer saber onde seu pet será atendido? Dá uma olhada no nosso espaço e conheça um pouco da rotina do Jacaré Amado.",
-      src: "/videos/tour-consultorio.mp4",
-      poster: "/images/tour-capa.jpg",
-      title: "Tour pelo consultório Jacaré Amado",
     },
   },
 

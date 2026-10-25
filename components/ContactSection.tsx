@@ -14,7 +14,7 @@ export default function ContactSection() {
   const { contact, contactSection } = siteConfig;
 
   return (
-    <section id="contato" aria-labelledby="contato-titulo" className="scroll-mt-20 px-4 py-10 sm:px-5 md:py-14">
+    <section id="contato" aria-labelledby="contato-titulo" className="scroll-mt-20 px-4 py-6 sm:px-5 md:py-8">
       <div className="relative isolate mx-auto grid max-w-6xl overflow-hidden rounded-3xl bg-navy md:grid-cols-[1fr_1.1fr] md:rounded-[2rem]">
         {/* Diagonais da marca */}
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
@@ -22,7 +22,7 @@ export default function ContactSection() {
           <div className="absolute -bottom-10 -left-16 h-28 w-[360px] -rotate-12 rounded-[60px] bg-magenta/25" />
         </div>
 
-        <div className="p-6 sm:p-8 md:p-10">
+        <div className="p-6 sm:p-8 md:p-7">
           <h2
             id="contato-titulo"
             className="font-display text-[1.7rem] font-bold leading-tight text-white sm:text-4xl"
@@ -94,7 +94,7 @@ export default function ContactSection() {
         </div>
 
         <div className="px-3 pb-3 md:p-4 md:pl-0">
-          <div className="relative h-[240px] w-full overflow-hidden rounded-2xl border-4 border-white bg-cream md:h-full md:min-h-[380px]">
+          <div className="relative h-[240px] w-full overflow-hidden rounded-2xl border-4 border-white bg-cream md:h-full md:min-h-[340px]">
             <iframe
               title={`Mapa: ${contact.address}, ${contact.district}`}
               src={getMapsEmbedLink()}

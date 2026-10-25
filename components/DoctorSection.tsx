@@ -1,17 +1,16 @@
-import { ClipboardList, Heart, UserRound } from "lucide-react";
+import { ClipboardList, UserRound } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import Photo from "./Photo";
-import ClinicVideo from "./ClinicVideo";
 
 // Doutora + especializações + origem do nome, num único bloco compacto
 export default function DoctorSection() {
   const { doctor } = siteConfig;
 
   return (
-    <section id="doutora" aria-labelledby="doutora-titulo" className="scroll-mt-20 py-10 md:py-14">
+    <section id="doutora" aria-labelledby="doutora-titulo" className="scroll-mt-20 py-5 md:py-7">
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
-        <div className="grid items-center gap-6 rounded-3xl border border-magenta/15 bg-white p-3 shadow-lg shadow-navy/5 sm:p-5 md:grid-cols-[0.85fr_1.15fr] md:gap-10 md:p-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-[4/5]">
+        <div className="grid items-center gap-6 rounded-3xl border border-magenta/15 bg-white p-3 shadow-lg shadow-navy/5 sm:p-5 md:grid-cols-[0.85fr_1.15fr] md:gap-6 md:p-6">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-square">
             <Photo
               src={doctor.photo}
               alt={doctor.photoAlt}
@@ -70,31 +69,13 @@ export default function DoctorSection() {
               ))}
             </ul>
 
-            {/* Origem do nome — box pequeno, não uma seção inteira */}
-            <div className="mt-5 rounded-2xl border-l-4 border-magenta bg-magenta/5 p-4">
-              <h3 className="flex items-center gap-2 font-display text-base font-bold text-navy">
-                <Heart className="h-4 w-4 fill-magenta text-magenta" aria-hidden />
-                {doctor.origin.heading}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink/75">{doctor.origin.text}</p>
-            </div>
+            <details className="mt-4 border-t border-magenta/15 pt-3 text-sm text-ink/75">
+              <summary className="min-h-11 cursor-pointer py-3 font-semibold text-navy">Conheça a história do nome</summary>
+              <p className="pb-2 leading-relaxed">{doctor.origin.text}</p>
+            </details>
           </div>
         </div>
 
-        {/* Vídeo do consultório — destino do botão "Conhecer o consultório" */}
-        <div className="mt-5 grid items-center gap-6 overflow-hidden rounded-3xl bg-sky/10 p-5 sm:p-6 md:grid-cols-[1fr_auto] md:gap-12 md:p-8">
-          <div className="text-center md:text-left">
-            <h3 className="font-display text-2xl font-bold leading-tight text-navy sm:text-3xl">
-              {doctor.video.heading}
-            </h3>
-            <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-ink/75 sm:text-base md:mx-0">
-              {doctor.video.text}
-            </p>
-          </div>
-          <div className="w-full md:w-[280px]">
-            <ClinicVideo src={doctor.video.src} poster={doctor.video.poster} title={doctor.video.title} />
-          </div>
-        </div>
       </div>
     </section>
   );

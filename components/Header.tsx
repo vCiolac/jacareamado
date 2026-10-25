@@ -8,7 +8,7 @@ import Logo from "./Logo";
 
 // Faixa azul da marca com o "X" rosa atrás do logo (como na arte aprovada).
 // Celular: logo + menu hamburger (~64 px). Desktop: links curtos.
-// O WhatsApp fica no botão flutuante (WhatsappFloat).
+// WhatsApp no desktop; botão flutuante apenas no celular.
 export default function Header() {
   const [open, setOpen] = useState(false);
   const instagramLink = getInstagramLink();
@@ -50,6 +50,9 @@ export default function Header() {
             </ul>
           </nav>
 
+          <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className="hidden min-h-11 items-center gap-2 rounded-full bg-magenta-deep px-5 text-sm font-semibold text-white hover:bg-magenta-darker lg:inline-flex">
+            <MessageCircle className="h-5 w-5" aria-hidden /> Falar no WhatsApp
+          </a>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}

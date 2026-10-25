@@ -7,8 +7,8 @@ Vercel. Versão compacta e mobile-first (especificação final de out/2026).
 ## Estrutura da página (5 blocos)
 
 1. Header + Hero (`#inicio`) — logo, menu curto (hamburger no celular),
-   WhatsApp, headline, foto e resumo de horário/endereço/telefones
-2. Serviços (`#servicos`) — os seis serviços; swipe no celular, uma linha no desktop
+   WhatsApp, headline, arte e resumo de horário/endereço/telefones
+2. Serviços (`#servicos`) — os seis serviços; grade 3×2 no celular, uma linha no desktop
 3. A Doutora (`#doutora`) — foto, CRMV, especializações e a origem do nome
 4. Nossa equipe (`#equipe`) — carrossel de fotos reais (sem autoplay)
 5. Contato (`#contato`) — WhatsApp, rota, horário, endereço, telefones e mapa
@@ -94,3 +94,13 @@ lib/site-config.ts   todo o conteúdo editável do site
 lib/links.ts         monta links de WhatsApp, Instagram, mapa e telefone
 public/images/       fotos reais
 ```
+
+## Pendências da referência aprovada
+
+A composição foi preparada, mas três assets originais ainda precisam ser fornecidos:
+
+- `public/images/logo-oficial.png`: logo oficial, inclusive header e footer.
+- `public/images/hero-doutora-animais.png`: ilustração transparente aprovada.
+- `public/images/gato-cachorro.png`: arte do mini-card.
+
+Após adicionar cada arquivo, ative o respectivo `logoAvailable` ou `imageAvailable` em `lib/site-config.ts`. Os espaços permanecem reservados sem imagem quebrada ou marca simulada. Não usar recortes da referência como assets finais. A fidelidade visual e o aceite dos itens de imagens dependem destes arquivos. Fotos locais não versionadas foram preservadas.

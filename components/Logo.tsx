@@ -1,52 +1,11 @@
 import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 
-// `tone="onBlue"`: versão da faixa azul do header (nome em amarelo com
-// contorno azul-marinho, como na arte da marca).
-export default function Logo({
-  size = "md",
-  tone = "default",
-}: {
-  size?: "sm" | "md";
-  tone?: "default" | "onBlue";
-}) {
+export default function Logo({ size = "md" }: { size?: "sm" | "md"; tone?: "default" | "onBlue" }) {
   const { business } = siteConfig;
-
-  if (business.logo) {
-    return (
-      <Image
-        src={business.logo}
-        alt={`${business.name} — ${business.tagline}`}
-        width={size === "sm" ? 140 : 200}
-        height={size === "sm" ? 48 : 68}
-        className="h-auto w-auto"
-        priority={size === "md"}
-      />
-    );
+  if (!business.logoAvailable) {
+    // Não simular a marca nem carregar uma imagem inexistente em produção.
+    return <span role="img" aria-label={business.name} className={size === "sm" ? "block h-10 w-36" : "block h-12 w-44 sm:w-52"} />;
   }
-
-  const onBlue = tone === "onBlue";
-
-  return (
-    <span className="flex flex-col leading-none">
-      <span
-        className={`font-display font-extrabold tracking-tight ${
-          size === "sm" ? "text-xl" : "text-2xl sm:text-[1.7rem]"
-        } ${
-          onBlue
-            ? "text-sun [paint-order:stroke_fill] [-webkit-text-stroke:3px_#0D4A78] [text-shadow:0_2px_0_#0D4A78]"
-            : "text-navy"
-        }`}
-      >
-        {business.name}
-      </span>
-      <span
-        className={`mt-1 text-[10px] font-bold uppercase tracking-[0.14em] ${
-          onBlue ? "text-white" : "text-magenta-deep"
-        }`}
-      >
-        {business.tagline}
-      </span>
-    </span>
-  );
+  return <Image src={business.logo} alt={business.name + " — " + business.tagline} width={240} height={82} priority={size === "md"} className={size === "sm" ? "h-auto max-h-12 w-36 object-contain" : "h-auto max-h-14 w-44 object-contain sm:w-52"} />;
 }

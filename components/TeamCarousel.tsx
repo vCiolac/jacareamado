@@ -58,7 +58,7 @@ export default function TeamCarousel() {
     "flex h-11 w-11 items-center justify-center rounded-full border border-navy/15 bg-white text-navy transition-colors hover:border-navy/40 disabled:cursor-default disabled:opacity-35 disabled:hover:border-navy/15";
 
   return (
-    <section id="equipe" aria-labelledby="equipe-titulo" className="scroll-mt-20 bg-white py-10 md:py-14">
+    <section id="equipe" aria-labelledby="equipe-titulo" className="scroll-mt-20 bg-white py-6 md:py-8">
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
         <div className="flex items-end justify-between gap-4">
           <div>
@@ -105,7 +105,7 @@ export default function TeamCarousel() {
           aria-label="Fotos da equipe"
           tabIndex={0}
           onKeyDown={onKeyDown}
-          className="mt-6 rounded-3xl"
+          className="mt-4 rounded-3xl"
         >
           <ul
             id="equipe-trilha"
@@ -121,7 +121,7 @@ export default function TeamCarousel() {
                 className="shrink-0 basis-[86%] snap-start sm:basis-[calc((100%-1rem)/2)] lg:basis-[calc((100%-2rem)/3)] xl:basis-[calc((100%-3rem)/4)]"
               >
                 <figure>
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-navy/5">
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-navy/5">
                     <Image
                       src={item.src}
                       alt={item.alt}
