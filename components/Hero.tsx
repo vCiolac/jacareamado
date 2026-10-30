@@ -102,13 +102,12 @@ export default function Hero() {
         </div>
 
         <div className="relative order-2 mx-auto w-full max-w-lg md:max-w-none">
-          <div className="relative aspect-[4/3] w-full md:aspect-square" role={hero.imageAvailable ? undefined : "img"} aria-label={hero.imageAvailable ? undefined : "Ilustração oficial aguardando fornecimento"}>
-            {hero.imageAvailable && hero.image && <Image src={hero.image} alt={hero.imageAlt} fill sizes="(min-width: 768px) 55vw, 100vw" priority className="object-contain" />}
+          <div className="relative mx-auto aspect-square w-full max-w-sm md:max-w-none" role={hero.imageAvailable ? undefined : "img"} aria-label={hero.imageAvailable ? undefined : "Ilustração oficial aguardando fornecimento"}>
+            {hero.imageAvailable && hero.image && <Image src={hero.image} alt={hero.imageAlt} fill sizes="(min-width: 768px) 55vw, 100vw" priority className="object-contain object-bottom" />}
           </div>
-          <div className="relative flex min-h-32 items-center gap-4 rounded-3xl border border-navy/5 bg-cream p-4 shadow-md shadow-navy/10 md:-mt-3">
-            {hero.keepsake.imageAvailable && <div className="relative h-32 w-2/5 shrink-0"><Image src={hero.keepsake.image} alt={hero.keepsake.imageAlt} fill sizes="200px" className="object-contain" /></div>}
+          <div className="relative flex min-h-32 items-center gap-4 rounded-3xl border border-navy/5 bg-cream p-4 shadow-md shadow-navy/10 -mt-1 md:-mt-3">
+            {hero.keepsake.imageAvailable && <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full ring-4 ring-white shadow-md shadow-navy/15 sm:h-28 sm:w-28"><Image src={hero.keepsake.image} alt={hero.keepsake.imageAlt} fill sizes="112px" className="object-cover" /></div>}
             <div><h2 className="max-w-60 font-display text-xl font-bold leading-tight text-navy">{hero.keepsake.heading}</h2><p className="mt-2 max-w-64 text-sm leading-relaxed text-ink/75">{hero.keepsake.text}</p></div>
-            {siteConfig.business.logoAvailable && <div className="absolute right-3 top-3 h-9 w-9 overflow-hidden rounded-full"><Image src={siteConfig.business.logo} alt="" fill sizes="36px" className="object-contain" /></div>}
           </div>
         </div>
       </div>

@@ -15,9 +15,9 @@ export const siteConfig = {
   business: {
     name: "Jacaré Amado",
     tagline: "Consultório Veterinário Popular",
-    // Arquivos oficiais pendentes de entrega. Ative somente após adicioná-los.
+    // Logo recortado do banner oficial (fundo transparente)
     logo: "/images/logo-oficial.png",
-    logoAvailable: false,
+    logoAvailable: true,
   },
 
   // Menu do topo (âncoras dos 5 blocos da página)
@@ -51,9 +51,9 @@ export const siteConfig = {
     // Rola até a seção da doutora
     secondaryCta: "Conhecer o consultório",
     secondaryHref: "#doutora",
-    // Arte oficial transparente pendente; nunca substituir pela foto real.
+    // Arte oficial transparente; nunca substituir pela foto real.
     image: "/images/hero-doutora-animais.png" as Media,
-    imageAvailable: false,
+    imageAvailable: true,
     imageFit: "contain" as "cover" | "contain",
     imagePosition: "center",
     imageAlt: "Ilustração da doutora com vários animais",
@@ -61,7 +61,7 @@ export const siteConfig = {
       heading: "Desde sempre cuidando de perto",
       text: "Tradição, carinho e compromisso com a saúde do seu pet.",
       image: "/images/gato-cachorro.png",
-      imageAvailable: false,
+      imageAvailable: true,
       imageAlt: "Gato e cachorro juntos",
     },
   },

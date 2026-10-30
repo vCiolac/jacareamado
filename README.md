@@ -97,10 +97,10 @@ public/images/       fotos reais
 
 ## Pendências da referência aprovada
 
-A composição foi preparada, mas três assets originais ainda precisam ser fornecidos:
+Assets oficiais (entregues em out/2026):
 
 - `public/images/logo-oficial.png`: logo oficial, inclusive header e footer.
 - `public/images/hero-doutora-animais.png`: ilustração transparente aprovada.
 - `public/images/gato-cachorro.png`: arte do mini-card.
 
-Após adicionar cada arquivo, ative o respectivo `logoAvailable` ou `imageAvailable` em `lib/site-config.ts`. Os espaços permanecem reservados sem imagem quebrada ou marca simulada. Não usar recortes da referência como assets finais. A fidelidade visual e o aceite dos itens de imagens dependem destes arquivos. Fotos locais não versionadas foram preservadas.
+O logo e o círculo do gato com o cachorro foram recortados do banner oficial da marca, com fundo transparente. Para trocar, substitua o arquivo e mantenha `logoAvailable`/`imageAvailable` em `lib/site-config.ts`. Não usar recortes da referência (`reference.jpeg`) como assets finais.
