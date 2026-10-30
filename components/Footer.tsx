@@ -1,7 +1,8 @@
-import { Instagram, MessageCircle } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { getWhatsappLink, getInstagramLink } from "@/lib/links";
 import Logo from "./Logo";
+import WhatsappIcon from "./WhatsappIcon";
 
 // Rodapé baixo: logo, Instagram, WhatsApp, copyright e versículo
 export default function Footer() {
@@ -26,7 +27,7 @@ export default function Footer() {
           )}
           <li>
             <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className={linkClass}>
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-magenta-deep text-white"><MessageCircle className="h-4 w-4" aria-hidden /></span>
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-magenta-deep text-white"><WhatsappIcon className="h-4 w-4" /></span>
               WhatsApp
             </a>
           </li>

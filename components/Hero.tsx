@@ -1,8 +1,9 @@
-import { MessageCircle, Clock, MapPin, Phone, ArrowDown } from "lucide-react";
+import { Clock, MapPin, Phone, ArrowDown, Instagram } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { getWhatsappLink, getPhoneLink } from "@/lib/links";
+import { getWhatsappLink, getPhoneLink, getInstagramLink } from "@/lib/links";
 import Image from "next/image";
 import { ctaPrimary, ctaOutline } from "./cta";
+import WhatsappIcon from "./WhatsappIcon";
 
 // Destaca o "•" do horário em rosa, como na arte da marca
 function Hours({ text }: { text: string }) {
@@ -19,8 +20,12 @@ function Hours({ text }: { text: string }) {
   );
 }
 
+// Atraso da animação de entrada, para os blocos aparecerem um depois do outro
+const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as React.CSSProperties;
+
 export default function Hero() {
   const { hero, contact } = siteConfig;
+  const instagramLink = getInstagramLink();
 
   return (
     <section id="inicio" aria-labelledby="inicio-titulo" className="relative isolate scroll-mt-20 overflow-hidden">
@@ -40,18 +45,18 @@ export default function Hero() {
           <div className="order-1">
           <h1
             id="inicio-titulo"
-            className="font-display text-[2.1rem] font-bold leading-[1.08] text-navy sm:text-5xl lg:text-[3.4rem]"
+            className="anim-surgir font-display text-[2.1rem] font-bold leading-[1.08] text-navy sm:text-5xl lg:text-[3.4rem]"
           >
             {hero.heading} <span className="block text-magenta">{hero.headingHighlight}</span>
           </h1>
 
-          <p className="mt-3 max-w-md text-base leading-relaxed text-ink/75 sm:text-lg">
+          <p className="anim-surgir mt-3 max-w-md text-base leading-relaxed text-ink/75 sm:text-lg" style={delay(100)}>
             {hero.subheading}
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="anim-surgir mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap" style={delay(200)}>
             <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className={ctaPrimary}>
-              <MessageCircle className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+              <WhatsappIcon className="h-5 w-5" />
               {hero.whatsappCta}
             </a>
             <a href={hero.secondaryHref} className={ctaOutline}>
@@ -62,7 +67,7 @@ export default function Hero() {
 
           </div>
           {/* Resumo operacional — única vez que aparece antes do contato */}
-          <ul className="order-3 mt-0 flex max-w-lg md:mt-6 flex-col gap-3.5 rounded-3xl bg-white p-4 text-[15px] text-navy shadow-lg shadow-navy/10 sm:p-5">
+          <ul style={delay(300)} className="anim-surgir order-3 mt-0 flex max-w-lg md:mt-6 flex-col gap-3.5 rounded-3xl bg-white p-4 text-[15px] text-navy shadow-lg shadow-navy/10 sm:p-5">
             <li className="flex items-center gap-3">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-magenta-deep text-white">
                 <Clock className="h-5 w-5" strokeWidth={2.2} aria-hidden />
@@ -98,14 +103,29 @@ export default function Hero() {
                 ))}
               </span>
             </li>
+            {instagramLink && (
+              <li className="flex items-center gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-magenta-deep text-white">
+                  <Instagram className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+                </span>
+                <a
+                  href={instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[36px] min-w-0 items-center font-semibold text-navy underline decoration-navy/20 underline-offset-4 [overflow-wrap:anywhere] hover:decoration-navy"
+                >
+                  {contact.instagramHandle}
+                </a>
+              </li>
+            )}
           </ul>
         </div>
 
         <div className="relative order-2 mx-auto w-full max-w-lg md:max-w-none">
-          <div className="relative mx-auto aspect-square w-full max-w-sm md:max-w-none" role={hero.imageAvailable ? undefined : "img"} aria-label={hero.imageAvailable ? undefined : "Ilustração oficial aguardando fornecimento"}>
-            {hero.imageAvailable && hero.image && <Image src={hero.image} alt={hero.imageAlt} fill sizes="(min-width: 768px) 55vw, 100vw" priority className="object-contain object-bottom" />}
+          <div className="anim-pular relative mx-auto aspect-square w-full max-w-sm md:max-w-none" style={delay(150)} role={hero.imageAvailable ? undefined : "img"} aria-label={hero.imageAvailable ? undefined : "Ilustração oficial aguardando fornecimento"}>
+            {hero.imageAvailable && hero.image && <div className="anim-flutuar absolute inset-0"><Image src={hero.image} alt={hero.imageAlt} fill sizes="(min-width: 768px) 55vw, 100vw" priority className="object-contain object-bottom" /></div>}
           </div>
-          <div className="relative flex min-h-32 items-center gap-4 rounded-3xl border border-navy/5 bg-cream p-4 shadow-md shadow-navy/10 -mt-1 md:-mt-3">
+          <div style={delay(450)} className="anim-surgir relative flex min-h-32 items-center gap-4 rounded-3xl border border-navy/5 bg-cream p-4 shadow-md shadow-navy/10 -mt-1 md:-mt-3">
             {hero.keepsake.imageAvailable && <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full ring-4 ring-white shadow-md shadow-navy/15 sm:h-28 sm:w-28"><Image src={hero.keepsake.image} alt={hero.keepsake.imageAlt} fill sizes="112px" className="object-cover" /></div>}
             <div><h2 className="max-w-60 font-display text-xl font-bold leading-tight text-navy">{hero.keepsake.heading}</h2><p className="mt-2 max-w-64 text-sm leading-relaxed text-ink/75">{hero.keepsake.text}</p></div>
           </div>

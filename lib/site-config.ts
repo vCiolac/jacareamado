@@ -37,7 +37,8 @@ export const siteConfig = {
     phones: ["(21) 3190-5544", "(21) 98229-3526"],
     whatsappNumber: "5521982293526", // formato internacional, só dígitos
     whatsappMessage: "Olá! Gostaria de agendar uma consulta para o meu pet.",
-    instagramUrl: "https://www.instagram.com/jacareamadoveterinariapopular",
+    instagramUrl: "https://www.instagram.com/jacareamadoveterinariapopular/",
+    instagramHandle: "@jacareamadoveterinariapopular",
     // Endereço usado no mapa incorporado e no botão "Abrir rota"
     mapQuery: "Estrada de Jacarepaguá, 7187, Loja A, Freguesia, Rio de Janeiro",
   },

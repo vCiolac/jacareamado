@@ -59,7 +59,7 @@ export default function TeamCarousel() {
 
   return (
     <section id="equipe" aria-labelledby="equipe-titulo" className="scroll-mt-20 bg-white py-6 md:py-8">
-      <div className="mx-auto max-w-6xl px-4 sm:px-5">
+      <div data-reveal className="mx-auto max-w-6xl px-4 sm:px-5">
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-magenta-deep">

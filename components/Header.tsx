@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Instagram, Menu, MessageCircle, X } from "lucide-react";
+import { Instagram, Menu, X } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { getWhatsappLink, getInstagramLink } from "@/lib/links";
 import Logo from "./Logo";
+import WhatsappIcon from "./WhatsappIcon";
 
 // Faixa azul da marca com o "X" rosa atrás do logo (como na arte aprovada).
 // Celular: logo + menu hamburger (~64 px). Desktop: links curtos.
@@ -51,7 +52,7 @@ export default function Header() {
           </nav>
 
           <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className="hidden min-h-11 items-center gap-2 rounded-full bg-magenta-deep px-5 text-sm font-semibold text-white hover:bg-magenta-darker lg:inline-flex">
-            <MessageCircle className="h-5 w-5" aria-hidden /> Falar no WhatsApp
+            <WhatsappIcon className="h-5 w-5" /> Falar no WhatsApp
           </a>
           <button
             type="button"
@@ -87,7 +88,7 @@ export default function Header() {
                 rel="noopener noreferrer"
                 className="flex min-h-[48px] items-center gap-2 text-base font-medium text-navy"
               >
-                <MessageCircle className="h-5 w-5 text-magenta-deep" aria-hidden />
+                <WhatsappIcon className="h-5 w-5 text-magenta-deep" />
                 WhatsApp
               </a>
             </li>

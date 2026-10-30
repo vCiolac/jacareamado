@@ -30,7 +30,7 @@ export default function Services() {
       className="scroll-mt-20 py-7 md:py-9"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
-        <div className="text-center">
+        <div data-reveal className="text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-magenta-deep">
             {services.eyebrow}
           </p>
@@ -52,6 +52,8 @@ export default function Services() {
             return (
               <li
                 key={item.name}
+                data-reveal
+                style={{ "--delay": `${i * 70}ms` } as React.CSSProperties}
                 className="flex shrink-0 basis-[44%] snap-start flex-col items-center rounded-2xl border border-navy/5 bg-white px-2 py-4 text-center shadow-md shadow-navy/10 sm:basis-[30%] lg:basis-auto"
               >
                 <span

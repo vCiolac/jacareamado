@@ -9,7 +9,7 @@ export default function DoctorSection() {
   return (
     <section id="doutora" aria-labelledby="doutora-titulo" className="scroll-mt-20 py-5 md:py-7">
       <div className="mx-auto max-w-6xl px-4 sm:px-5">
-        <div className="grid items-center gap-6 rounded-3xl border border-magenta/15 bg-white p-3 shadow-lg shadow-navy/5 sm:p-5 md:grid-cols-[0.85fr_1.15fr] md:gap-6 md:p-6">
+        <div data-reveal className="grid items-center gap-6 rounded-3xl border border-magenta/15 bg-white p-3 shadow-lg shadow-navy/5 sm:p-5 md:grid-cols-[0.85fr_1.15fr] md:gap-6 md:p-6">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl md:aspect-square">
             <Photo
               src={doctor.photo}

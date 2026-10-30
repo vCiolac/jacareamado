@@ -1,4 +1,5 @@
-import { Clock, MapPin, Phone, MessageCircle, Navigation } from "lucide-react";
+import { Clock, MapPin, Phone, Navigation } from "lucide-react";
+import WhatsappIcon from "./WhatsappIcon";
 import { siteConfig } from "@/lib/site-config";
 import {
   getWhatsappLink,
@@ -15,7 +16,7 @@ export default function ContactSection() {
 
   return (
     <section id="contato" aria-labelledby="contato-titulo" className="scroll-mt-20 px-4 py-6 sm:px-5 md:py-8">
-      <div className="relative isolate mx-auto grid max-w-6xl overflow-hidden rounded-3xl bg-navy md:grid-cols-[1fr_1.1fr] md:rounded-[2rem]">
+      <div data-reveal className="relative isolate mx-auto grid max-w-6xl overflow-hidden rounded-3xl bg-navy md:grid-cols-[1fr_1.1fr] md:rounded-[2rem]">
         {/* Diagonais da marca */}
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -left-24 -top-10 h-32 w-[420px] -rotate-12 rounded-[60px] bg-sky/20" />
@@ -40,7 +41,7 @@ export default function ContactSection() {
               rel="noopener noreferrer"
               className={`${ctaPrimary} focus-visible:outline-white`}
             >
-              <MessageCircle className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+              <WhatsappIcon className="h-5 w-5" />
               {contactSection.whatsappCta}
             </a>
             <a

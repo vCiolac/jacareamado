@@ -6,6 +6,7 @@ import TeamCarousel from "@/components/TeamCarousel";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsappFloat from "@/components/WhatsappFloat";
+import ScrollReveal from "@/components/ScrollReveal";
 
 // Página compacta em 5 blocos: hero, serviços, doutora (+ origem do nome),
 // equipe e contato com mapa.
@@ -22,6 +23,7 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsappFloat />
+      <ScrollReveal />
     </>
   );
 }
