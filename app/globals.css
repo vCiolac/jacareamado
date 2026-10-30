@@ -19,31 +19,15 @@
   }
 }
 
-/* Animações fofinhas: entrada do hero, ilustração flutuando e blocos que
+/* Animações fofinhas: entrada do hero e blocos que
    surgem ao rolar. Quem pede menos movimento no sistema não vê nenhuma. */
 @keyframes surgir {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
 }
-@keyframes pular {
-  0% { opacity: 0; transform: scale(0.92) translateY(16px); }
-  60% { opacity: 1; transform: scale(1.02) translateY(-4px); }
-  100% { opacity: 1; transform: none; }
-}
-@keyframes flutuar {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
 .anim-surgir {
   animation: surgir 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: var(--delay, 0ms);
-}
-.anim-pular {
-  animation: pular 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--delay, 0ms);
-}
-.anim-flutuar {
-  animation: flutuar 5s ease-in-out 1.2s infinite;
 }
 /* Só esconde depois que o ScrollReveal confirmou que vai revelar (sem JS, tudo aparece) */
 .reveal-on [data-reveal] {
@@ -55,12 +39,6 @@
 .reveal-on [data-reveal].is-visible {
   opacity: 1;
   transform: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .anim-flutuar {
-    animation: none;
-  }
 }
 
 *:focus-visible {

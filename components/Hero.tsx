@@ -122,8 +122,8 @@ export default function Hero() {
         </div>
 
         <div className="relative order-2 mx-auto w-full max-w-lg md:max-w-none">
-          <div className="anim-pular relative mx-auto aspect-square w-full max-w-sm md:max-w-none" style={delay(150)} role={hero.imageAvailable ? undefined : "img"} aria-label={hero.imageAvailable ? undefined : "Ilustração oficial aguardando fornecimento"}>
-            {hero.imageAvailable && hero.image && <div className="anim-flutuar absolute inset-0"><Image src={hero.image} alt={hero.imageAlt} fill sizes="(min-width: 768px) 55vw, 100vw" priority className="object-contain object-bottom" /></div>}
+          <div className="anim-surgir relative mx-auto aspect-square w-full max-w-sm md:max-w-none" style={delay(150)} role={hero.imageAvailable ? undefined : "img"} aria-label={hero.imageAvailable ? undefined : "Ilustração oficial aguardando fornecimento"}>
+            {hero.imageAvailable && hero.image && <Image src={hero.image} alt={hero.imageAlt} fill sizes="(min-width: 768px) 55vw, 100vw" priority className="object-contain object-bottom" />}
           </div>
           <div style={delay(450)} className="anim-surgir relative flex min-h-32 items-center gap-4 rounded-3xl border border-navy/5 bg-cream p-4 shadow-md shadow-navy/10 -mt-1 md:-mt-3">
             {hero.keepsake.imageAvailable && <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full ring-4 ring-white shadow-md shadow-navy/15 sm:h-28 sm:w-28"><Image src={hero.keepsake.image} alt={hero.keepsake.imageAlt} fill sizes="112px" className="object-cover" /></div>}
