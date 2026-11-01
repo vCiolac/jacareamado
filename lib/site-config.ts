@@ -49,6 +49,7 @@ export const siteConfig = {
     subheading:
       "Atendimento veterinário humano, responsável e acessível para quem faz parte da sua família.",
     whatsappCta: "Falar no WhatsApp",
+    instagramCta: "Ver Instagram",
     // Rola até a seção da doutora
     secondaryCta: "Conhecer o consultório",
     secondaryHref: "#doutora",

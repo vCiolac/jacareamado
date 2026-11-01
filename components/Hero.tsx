@@ -54,12 +54,20 @@ export default function Hero() {
             {hero.subheading}
           </p>
 
-          <div className="anim-surgir mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap" style={delay(200)}>
-            <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className={ctaPrimary}>
-              <WhatsappIcon className="h-5 w-5" />
-              {hero.whatsappCta}
-            </a>
-            <a href={hero.secondaryHref} className={ctaOutline}>
+          <div className="anim-surgir mt-6 flex flex-col gap-3" style={delay(200)}>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a href={getWhatsappLink()} target="_blank" rel="noopener noreferrer" className={ctaPrimary}>
+                <WhatsappIcon className="h-5 w-5" />
+                {hero.whatsappCta}
+              </a>
+              {instagramLink && (
+                <a href={instagramLink} target="_blank" rel="noopener noreferrer" className={ctaPrimary}>
+                  <Instagram className="h-5 w-5" strokeWidth={2.2} aria-hidden />
+                  {hero.instagramCta}
+                </a>
+              )}
+            </div>
+            <a href={hero.secondaryHref} className={`${ctaOutline} self-start`}>
               <ArrowDown className="h-5 w-5" strokeWidth={2.2} aria-hidden />
               {hero.secondaryCta}
             </a>
@@ -103,21 +111,6 @@ export default function Hero() {
                 ))}
               </span>
             </li>
-            {instagramLink && (
-              <li className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-magenta-deep text-white">
-                  <Instagram className="h-5 w-5" strokeWidth={2.2} aria-hidden />
-                </span>
-                <a
-                  href={instagramLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-[36px] min-w-0 items-center font-semibold text-navy underline decoration-navy/20 underline-offset-4 [overflow-wrap:anywhere] hover:decoration-navy"
-                >
-                  {contact.instagramHandle}
-                </a>
-              </li>
-            )}
           </ul>
         </div>
 
